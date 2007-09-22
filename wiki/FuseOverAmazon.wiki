@@ -18,6 +18,10 @@ That's it! the contents of your amazon bucket "mybucket" should now be accessibl
 If you don't like specifying your secretAccessKey on the command line
 then you can create a file "/etc/password-s3fs" with a line containing accessKeyId:secretAccessKey pair. Then the command line becomes: */usr/bin/s3fs mybucket /mnt*. You can have more than one set of credentials (i.e., credentials for more than one amazon s3 account) in /etc/password-s3fs in which case you'll have to specify -o accessKeyId=aaa on the command line.
 
+Hosting a cvsroot on s3 seems to work! Although you probably don't really want to do it in practice. E.g., cvs -d /s3/cvsroot init.
+
+Using rsync with an s3 volume as the destination doesn't quite work because of timestamp issues. s3fs does not (yet) support changing timestamps on files.
+
 = Details =
 
 = Faq =
@@ -60,6 +64,7 @@ then you can create a file "/etc/password-s3fs" with a line containing accessKey
  * better error logging for troubleshooting, e.g., syslog...
   * need to parse response on, say, 403 and 404 errors, etc... and log 'em!
  * use temporary file for flush() and then stream it to amazon
+ 
  
  
  
