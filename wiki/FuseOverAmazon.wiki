@@ -1,15 +1,59 @@
-#summary One-sentence summary of this page.
+FUSE filesystem backed by Amazon S3
 
 = Introduction =
 
-Add your content here.
+S3fs is a fuse based file system backed by Amazon S3. It stores files in S3 "natively". Maximum file size=5G.
 
+Its quite useful and stable, e.g., can be used to do a daily backup.
+
+To use it:
+ * get an amazon s3 account!
+ * download the source, compile it and slap the binary in, say, /usr/bin/s3fs
+ * */usr/bin/s3fs mybucket -o accessKeyId=aaa -o secretAccessKey=bbb /mnt*
+ * that's it! the contents of your amazon bucket "mybucket" should now be accessible (read/write) in /mnt
+
+If you don't like specifying your secretAccessKey on the command line
+then you can create a file "/etc/password-s3fs" with a line containing accessKeyId:secretAccessKey pair. Then the command line becomes: */usr/bin/s3fs mybucket /mnt*. You can have more than one set of credentials (i.e., credentials for more than one amazon s3 account) in /etc/password-s3fs in which case you'll have to specify -o accessKeyId=aaa on the command line.
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= Faq =
 
- 
+ * What do I need to know?
+  * /usr/bin/s3fs
+  * an entry in /etc/fstab (optional)
+  * the file /etc/passwd-s3fs (optional)
+  * stores files "natively" in amazon s3; you can access files with other tools, e.g., jets3t
+ * Why do I get "Input/output error"?
+  * Does the bucket exist?
+  * Are your credentials correct?
+  * Is your local clock within 15 minutes of Amazon's? (RequestTimeTooSkewed)
+ * How do I troubleshoot it?
+  * Use the fuse -f switch, e.g., /usr/bin/s3fs -f my_bucket /mnt
+ * I've built and tested successfully on:
+  * fedora f7/i386
+  * fedora fc5/ppc
+
+= Limitations =
+ * no permissions checking
+ * no chmod support: all files are 0775
+ * no symlink support
+ * rename is "supported" by virtue of returning EXDEV from rename()
+ * when writing files: requires as much memory as the size of the largest file you're writing (this can be easily fixed)
+
+= ToDo =
+
+ * support brute-force rename
+ * get symlinks working?
+  * this would bog down performance: would have to do deep getattr() for every single object
+ * make install target
+ * get "-h" help working
+ * handle utime so that rsync works!
+  * probably a bad idea after all...
+  * actually don't think it can be done: can't specify arbitrary create-time for PUT
+ * chmod support... acl
+ * permissions: using -o allow_other, even though files are owned by root 0755, another use can make changes
+  * use default_permissions option?!?
+ * better error logging for troubleshooting, e.g., syslog...
+  * need to parse response on, say, 403 and 404 errors, etc... and log 'em!
+ * use temporary file for flush() and then stream it to amazon
