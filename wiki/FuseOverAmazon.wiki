@@ -2,7 +2,7 @@ FUSE filesystem backed by Amazon S3
 
 = Introduction =
 
-S3fs is a fuse based file system backed by Amazon S3. It stores files in S3 "natively". Maximum file size=5G.
+s3fs is a fuse based file system backed by Amazon S3. It stores files in S3 "natively". Maximum file size=5G.
 
 Its quite useful and stable, e.g., can be used to do a daily backup.
 
@@ -57,3 +57,4 @@ then you can create a file "/etc/password-s3fs" with a line containing accessKey
  * better error logging for troubleshooting, e.g., syslog...
   * need to parse response on, say, 403 and 404 errors, etc... and log 'em!
  * use temporary file for flush() and then stream it to amazon
+ 
