@@ -4,7 +4,7 @@ FUSE filesystem backed by Amazon S3
 
 s3fs is a fuse based file system backed by Amazon S3. It stores files in S3 "natively". Maximum file size=5G.
 
-Its quite useful and stable, e.g., can be used to do a daily backup.
+Its quite useful and stable, e.g., can be used to easily copy daily backup tarballs to s3.
 
 To use it:
  # get an amazon s3 account!
