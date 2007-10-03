@@ -9,7 +9,7 @@ Its quite useful and stable, e.g., can be used to easily copy daily backup tarba
 To use it:
 
  # get an amazon s3 account!
- # download the source, compile it and slap the binary in, say, /usr/bin/s3fs
+ # download the source, compile it (I've used fc5/ppc and f7/i386) and slap the binary in, say, /usr/bin/s3fs
  # do this:
 
 {{{
@@ -46,9 +46,6 @@ Using rsync with an s3 volume as the destination doesn't quite work because of t
   * Is your local clock within 15 minutes of Amazon's? (RequestTimeTooSkewed)
  * How do I troubleshoot it?
   * Use the fuse -f switch, e.g., /usr/bin/s3fs -f my_bucket /mnt
- * I've built and tested successfully on:
-  * fedora f7/i386
-  * fedora fc5/ppc
 
 = Limitations =
  * no permissions checking
