@@ -7,18 +7,24 @@ s3fs is a fuse based file system backed by Amazon S3. It stores files in S3 "nat
 Its quite useful and stable, e.g., can be used to easily copy daily backup tarballs to s3.
 
 To use it:
+
  # get an amazon s3 account!
  # download the source, compile it and slap the binary in, say, /usr/bin/s3fs
  # do this:
+
 {{{
 /usr/bin/s3fs mybucket -o accessKeyId=aaa -o secretAccessKey=bbb /mnt
 }}}
+
 That's it! the contents of your amazon bucket "mybucket" should now be accessible read/write in /mnt
 
 If you don't like specifying your secretAccessKey on the command line
 then you can create a file "/etc/password-s3fs" with a line containing a accessKeyId:secretAccessKey pair. Then the command line becomes simply:
+
 {{{
-/usr/bin/s3fs mybucket /mnt}}}
+/usr/bin/s3fs mybucket /mnt
+}}}
+
 You can have more than one set of credentials (i.e., credentials for more than one amazon s3 account) in /etc/password-s3fs in which case you'll have to specify -o accessKeyId=aaa on the command line.
 
 Hosting a cvsroot on s3 seems to work! Although you probably don't really want to do it in practice. E.g., cvs -d /s3/cvsroot init.
