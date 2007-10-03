@@ -2,7 +2,7 @@ FUSE filesystem backed by Amazon S3
 
 = Overview =
 
-s3fs is a fuse filesystem that allows you to mount an Amazon S3 bucket as a local filesystem. It stores files "natively" in S3 (i.e., you should be able to use other programs to access the same files). Maximum file size=5G.
+s3fs is a [http://fuse.sourceforge.net fuse] filesystem that allows you to mount an Amazon S3 bucket as a local filesystem. It stores files "natively" in S3 (i.e., you should be able to use other programs to access the same files). Maximum file size=5G.
 
 Its quite useful and stable, e.g., can be used to easily copy daily backup tarballs to s3.
 
