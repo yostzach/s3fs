@@ -1,6 +1,6 @@
 FUSE filesystem backed by Amazon S3
 
-= Introduction =
+= Overview =
 
 s3fs is a fuse based file system backed by Amazon S3. It stores files in S3 "natively". Maximum file size=5G.
 
