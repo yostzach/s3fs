@@ -46,6 +46,8 @@ Using rsync with an s3 volume as the destination doesn't quite work because of t
   * Is your local clock within 15 minutes of Amazon's? (RequestTimeTooSkewed)
  * How do I troubleshoot it?
   * Use the fuse -f switch, e.g., /usr/bin/s3fs -f my_bucket /mnt
+ * Why do I see "Operation cannot be completed because you do not have sufficient privliges"
+  * you'll see this when a program you're using is trying to explicitly trying to set the modification time of a file. s3fs currently does not support this. Contents of the file are ok, its just that the timestamp might not be what you're expecting. I'm working to fix this.
 
 = Limitations =
  * no permissions checking
