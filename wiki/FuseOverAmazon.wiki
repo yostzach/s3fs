@@ -19,7 +19,7 @@ To use it:
 That's it! the contents of your amazon bucket "mybucket" should now be accessible read/write in /mnt
 
 If you don't like specifying your secretAccessKey on the command line
-then you can create a file "/etc/password-s3fs" with a line containing a accessKeyId:secretAccessKey pair. Then the command line becomes simply:
+then you can create a file "/etc/passwd-s3fs" with a line containing a accessKeyId:secretAccessKey pair. Then the command line becomes simply:
 
 {{{
 /usr/bin/s3fs mybucket /mnt
