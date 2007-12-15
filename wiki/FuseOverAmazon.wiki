@@ -82,7 +82,7 @@ s3fs automatically maintains a local cache of files in the folder "~/.s3fs". Whe
   * use default_permissions option?!?
  * better error logging for troubleshooting, e.g., syslog...
   * need to parse response on, say, 403 and 404 errors, etc... and log 'em!
- * use temporary file for flush() and then stream it to amazon
+ * ~~use temporary file for flush() and then stream it to amazon~~
  
  
  
