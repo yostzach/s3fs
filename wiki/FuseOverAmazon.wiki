@@ -65,7 +65,7 @@ s3fs automatically maintains a local cache of files in the folder "~/.s3fs". Whe
  * no chmod support: all files are 0775
  * no symlink support
  * rename is "supported" by virtue of returning EXDEV from rename()
- * ~~ when writing files: requires as much memory as the size of the largest file you're writing (this can be easily fixed) ~~
+ * ~~ when writing files: requires as much memory as the size of the largest file you're writing (this can be easily fixed) ~~ fixed (svn 27) you should now be able to copy, say, a 2GB file to s3 without having s3fs malloc 2GB of memory!
 
 = ToDo =
 
