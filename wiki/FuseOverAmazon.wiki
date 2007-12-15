@@ -33,6 +33,10 @@ Using rsync with an s3 volume as the destination doesn't quite work because of t
 
 = Details =
 
+s3fs automatically maintains a local cache of files in the folder "~/.s3fs". Whenever s3fs needs to read or write a file on s3 it first downloads the entire file locally to .s3fs and operates on it. When fuse release() is called, s3fs will re-upload the file to s3 if it has been changed. s3fs uses md5 checksums to minimize downloads from s3.
+
+~/.s3fs is just a local cache. It can be deleted at any time. s3fs will rebuild it on demand.
+
 = Release Notes =
  * svn 28 2007-12-15
   * retry on 500 server error
