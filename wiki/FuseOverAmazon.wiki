@@ -33,6 +33,12 @@ Using rsync with an s3 volume as the destination doesn't quite work because of t
 
 = Details =
 
+= Release Notes =
+ * svn 27
+  * retry on 500 server error
+  * file-based (instead of memory-based)
+   * this means that s3fs will no longer allocate large memory buffers when writing files to s3
+
 = Faq =
 
  * What do I need to know?
@@ -54,7 +60,7 @@ Using rsync with an s3 volume as the destination doesn't quite work because of t
  * no chmod support: all files are 0775
  * no symlink support
  * rename is "supported" by virtue of returning EXDEV from rename()
- * when writing files: requires as much memory as the size of the largest file you're writing (this can be easily fixed)
+ * ~~ when writing files: requires as much memory as the size of the largest file you're writing (this can be easily fixed) ~~
 
 = ToDo =
 
