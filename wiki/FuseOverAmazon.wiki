@@ -34,9 +34,9 @@ Using rsync with an s3 volume as the destination doesn't quite work because of t
 = Details =
 
 = Release Notes =
- * svn 28
+ * svn 28 2007-12-15
   * retry on 500 server error
- * svn 27
+ * svn 27 2007-12-15
   * file-based (instead of memory-based)
    * this means that s3fs will no longer allocate large memory buffers when writing files to s3
 
