@@ -50,6 +50,7 @@ s3fs automatically maintains a local cache of files in the folder "~/.s3fs". Whe
   * /usr/bin/s3fs
   * an entry in /etc/fstab (optional)
   * the file /etc/passwd-s3fs (optional)
+  * the folder ~/.s3fs (local file cache automatically maintained by s3fs)
   * stores files "natively" in amazon s3; you can access files with other tools, e.g., jets3t
  * Why do I get "Input/output error"?
   * Does the bucket exist?
