@@ -31,7 +31,7 @@ Hosting a cvsroot on s3 works! Although you probably don't really want to do it 
 
 ~~Using rsync with an s3 volume as the destination doesn't quite work because of timestamp issues. s3fs does not (yet) support changing timestamps on files. I mean, it will work, as in it will copy files, but, the timestamps will just be current timestamps (rsync will complain about not being able to set timestamps but will continue).~~
 
-s3fs now works with rsync! (as of svn 43)
+s3fs now works with rsync! (as of svn 43) Due to s3fs' "brute-force" support of mode (chmod) and mtime (touch), upon first sync, files are uploaded more than once, however, subsequent rsyncs are pretty much as fast as can be.
 
 = Details =
 
