@@ -76,30 +76,25 @@ s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and 
 
 = Limitations =
  * no permissions checking
- * no chmod support: all files are 0775
+ * ~~no chmod support: all files are 0775~~ fixed in svn 43!
  * no symlink support
- * rename is "supported" by virtue of returning EXDEV from rename()
+ * ~~rename is "supported" by virtue of returning EXDEV from rename()~~ fixed in svn 43! svn 43 supports deep renaming of files
  * ~~ when writing files: requires as much memory as the size of the largest file you're writing (this can be easily fixed) ~~ fixed (svn 27) you should now be able to copy, say, a 2GB file to s3 without having s3fs malloc 2GB of memory!
+ * deep rename directories?!?
 
 = ToDo =
 
- * support brute-force rename
+ * ~~support brute-force rename~~ fixed in svn 43
  * get symlinks working?
-  * this would bog down performance: would have to do deep getattr() for every single object
+  * ~~ this would bog down performance: would have to do deep getattr() for every single object ~~ already doing this in svn 43... its not too bad!
  * make install target
  * get "-h" help working
- * handle utime so that rsync works!
-  * probably a bad idea after all...
-  * actually don't think it can be done: can't specify arbitrary create-time for PUT
+ * ~~ handle utime so that rsync works! ~~ fixed in svn 43!
+  * ~~ probably a bad idea after all... ~~
+  * ~~ actually don't think it can be done: can't specify arbitrary create-time for PUT ~~
  * chmod support... acl
  * permissions: using -o allow_other, even though files are owned by root 0755, another use can make changes
   * use default_permissions option?!?
  * better error logging for troubleshooting, e.g., syslog...
   * need to parse response on, say, 403 and 404 errors, etc... and log 'em!
  * ~~use temporary file for flush() and then stream it to amazon~~
- 
- 
- 
- 
- 
- 
