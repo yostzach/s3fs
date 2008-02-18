@@ -45,9 +45,8 @@ s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and 
 
 = Release Notes =
  * svn 43 2008-02-17
-  * mode (i.e., chmod), mtime and deep rename!
+  * mode (i.e., chmod), mtime and deep rename! rsync now works!
   * temporarily disabled local file cache (might not bring it back!)
-  * rsync now works!
  * svn 28 2007-12-15
   * retry on 500 server error
  * svn 27 2007-12-15
