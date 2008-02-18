@@ -44,6 +44,11 @@ New for svn 43: Local file cache is disabled and I might not bring it back. I or
 s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and "x-amz-meta-mtime" custom meta headers. As well, these are supported in a brute-force manner. That is, changing any x-amz-meta headers requires re-uploading the s3 object. This is exactly what s3fs does. When changing mode or mtime, s3fs will download the s3 object, change the meta header(s) and re-upload the s3 object.
 
 = Release Notes =
+ * svn 57 2008-02-18
+  * a few bug fixes:
+   * touch x-amz-meta-mtime in flush()
+   * use INFILE_LARGE (libcurl) (found on fc5/ppc)
+  * tidyup
  * svn 43 2008-02-17
   * mode (i.e., chmod), mtime and deep rename! rsync now works!
   * temporarily disabled local file cache (might not bring it back!)
