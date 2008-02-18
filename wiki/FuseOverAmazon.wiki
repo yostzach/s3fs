@@ -69,7 +69,7 @@ s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and 
  * How do I troubleshoot it?
   * Use the fuse -f switch, e.g., /usr/bin/s3fs -f my_bucket /mnt
  * Why do I see "Operation cannot be completed because you do not have sufficient privliges"
-  * you'll see this when a program you're using (e.g., tar, rsync) is trying to explicitly set the modification time of a file. s3fs currently does not support this. Contents of the file are ok, its just that the timestamp might not be what you're expecting. I'm working to fix this.
+  * ~~you'll see this when a program you're using (e.g., tar, rsync) is trying to explicitly set the modification time of a file. s3fs currently does not support this. Contents of the file are ok, its just that the timestamp might not be what you're expecting. I'm working to fix this.~~ fixed in svn 43!
  * Q: when I mount a bucket only the current user can see it; other users cannot; how do I allow other users to see it? A: use 'allow_other'
   * /usr/bin/s3fs -o allow_other mybucket /mnt
   * or from /etc/fstab: s3fs#mybucket /mnt fuse allow_other,accessKeyId=aaa,secretAccessKey=bbb 0 0
