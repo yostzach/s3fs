@@ -66,7 +66,7 @@ s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and 
   * /usr/bin/s3fs
   * an entry in /etc/fstab (optional)
   * the file /etc/passwd-s3fs (optional)
-  * ~~ the folder ~/.s3fs (local file cache automatically maintained by s3fs) ~~
+  * the folder ~/.s3fs (optional, a local file cache automatically maintained by s3fs, enabled with "use_cache" option, e.g., -ouse_cache=1)
   * stores files natively and transparently in amazon s3; you can access files with other tools, e.g., jets3t
  * Why do I get "Input/output error"?
   * Does the bucket exist?
