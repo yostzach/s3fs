@@ -68,7 +68,7 @@ s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and 
   * /usr/bin/s3fs
   * an entry in /etc/fstab (optional)
   * the file /etc/passwd-s3fs (optional)
-  * the folder ~/.s3fs (optional, a local file cache automatically maintained by s3fs, enabled with "use_cache" option, e.g., -ouse_cache=1)
+  * the folder ~/.s3fs (optional, a local file cache automatically maintained by s3fs, enabled with "use_cache" option, e.g., -ouse_cache=/tmp)
   * stores files natively and transparently in amazon s3; you can access files with other tools, e.g., jets3t
  * Why do I get "Input/output error"?
   * Does the bucket exist?
@@ -84,7 +84,7 @@ s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and 
  * Q: How does the local file cache work?
   * A: It is unbounded! if you want you can use a cron job (e.g., script in /etc/cron.daily) to periodically purge "~/.s3fs"... due to the reference nature of posix file systems a periodic purge will *not* interfere with the normal operation of s3fs local file cache...!
  * ~~Q: How do I change the location of the "~/.s3fs" folder?~~
-  * ~~A: you don't (for now)... use a softlink~~ -ouse_cache option *is* the path used for local file cache!
+  * ~~A: you don't (for now)... use a softlink~~ -ouse_cache option *is* the path used for local file cache! e.g., /usr/bin/s3fs mybucket /s3 -ouse_cache=/tmp
 
 = Limitations =
  * no permissions checking
