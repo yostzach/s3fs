@@ -44,8 +44,10 @@ New for svn 43: Local file cache is disabled and I might not bring it back. I or
 s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and "x-amz-meta-mtime" custom meta headers. As well, these are supported in a brute-force manner. That is, changing any x-amz-meta headers requires re-uploading the s3 object. This is exactly what s3fs does. When changing mode or mtime, s3fs will download the s3 object, change the meta header(s) and re-upload the s3 object. Ditto for file rename.
 
 = Release Notes =
+ * svn 72 2008-02-18
+  * use_cache now takes path to local file cache folder, e.g., /usr/bin/s3fs mybucket /s3 -ouse_cache=/tmp
  * svn 66 2008-02-18
-  * local file cache is back! however, it is disabled by default... use "use_cache" option, e.g., /usr/bin/s3fs mybucket /s3 -ouse_cache=1
+  * local file cache is back! however, it is disabled by default... use "use_cache" option, ~~e.g., /usr/bin/s3fs mybucket /s3 -ouse_cache=1~~
  * svn 57 2008-02-18
   * a few bug fixes:
    * touch x-amz-meta-mtime in flush()
@@ -81,8 +83,8 @@ s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and 
   * or from /etc/fstab: s3fs#mybucket /mnt fuse allow_other,accessKeyId=aaa,secretAccessKey=bbb 0 0
  * Q: How does the local file cache work?
   * A: It is unbounded! if you want you can use a cron job (e.g., script in /etc/cron.daily) to periodically purge "~/.s3fs"... due to the reference nature of posix file systems a periodic purge will *not* interfere with the normal operation of s3fs local file cache...!
- * Q: How do I change the location of the "~/.s3fs" folder?
-  * A: you don't (for now)... use a softlink
+ * ~~Q: How do I change the location of the "~/.s3fs" folder?~~
+  * ~~A: you don't (for now)... use a softlink~~ -ouse_cache option *is* the path used for local file cache!
 
 = Limitations =
  * no permissions checking
