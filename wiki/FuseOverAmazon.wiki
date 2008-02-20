@@ -53,6 +53,8 @@ s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and 
 Local file caching works by calculating and comparing md5 checksums (ETag HTTP header).
 
 = Release Notes =
+ * svn 88
+  * removed 10s read timeout that should not have been introduced
  * svn 72 2008-02-18
   * use_cache now takes path to local file cache folder, e.g., /usr/bin/s3fs mybucket /s3 -ouse_cache=/tmp
  * svn 66 2008-02-18
