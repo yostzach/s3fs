@@ -38,6 +38,8 @@ Hosting a cvsroot on s3 works! Although you probably don't really want to do it 
 
 s3fs now works with rsync! (as of svn 43) Due to the way FUSE works and s3fs' "brute-force" support of mode (chmod) and mtime (touch), upon first sync, files are downloaded/uploaded more than once (because rsync does (a) chmod (b) touch and (c) rename), however, subsequent rsyncs are pretty much as fast as can be. If that's too much downloading/downloading for ya then try using the "use_cache" option to enable the local file cache... it will definitely minimize the number of downloads.
 
+The default retry count is 2, i.e., s3fs will make 2 retries per s3 transaction (for a total of 3 attempts: 1st attemp + 2 retries) before giving up. You can change the retry count using "-oretries=2".
+
 = Details =
 
 If enabled via "use_cache" option, s3fs automatically maintains a local cache of files in the folder "~/.s3fs". Whenever s3fs needs to read or write a file on s3 it first downloads the entire file locally to .s3fs and operates on it. When fuse release() is called, s3fs will re-upload the file to s3 if it has been changed. s3fs uses md5 checksums to minimize downloads from s3.
