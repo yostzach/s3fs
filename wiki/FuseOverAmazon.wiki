@@ -44,17 +44,23 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
 
 = Options =
 
-accessKeyId
+ * *accessKeyId*
 
-secretAccessKey
+ * *secretAccessKey*
 
-default_acl
+ * *default_acl* (default="private")
+  * the default canned acl to apply to all written s3 objects
+  * any created files will have this canned acl
+  * any updated files will also have this canned acl applied!
 
-prefix (coming soon)
+ * *prefix* (default="") (coming soon!)
+  * a prefix to append to all s3 objects
 
-retries
+ * *retries* (default="2")
+  * number of times to retry a failed s3 transaction
 
-use_cache
+ * *use_cache* (default="" which means disabled)
+  * local folder to use for local file cache
 
 = Details =
 
