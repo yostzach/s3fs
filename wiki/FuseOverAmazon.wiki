@@ -74,6 +74,8 @@ s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and 
 
 Local file caching works by calculating and comparing md5 checksums (ETag HTTP header).
 
+All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".
+
 = Release Notes =
  * svn 88
   * removed 10s read timeout that should not have been introduced
