@@ -77,6 +77,18 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".
 
 = Release Notes =
+ * svn 107
+  * use CURLOPT_NOSIGNAL
+ * svn 106
+  * rewind on retry
+ * svn 105
+  * only send x-amz-acl and x-amz-meta headers
+ * svn 101, 102, 103
+  * fixed curl_multi_timeout bug (found on mac)
+ * svn 99
+  * added "default_acl" option
+ * svn 92
+  * parallel-ized readdir(): getting a directory listing is now a lot faster
  * svn 88
   * removed 10s read timeout that should not have been introduced
  * svn 72 2008-02-18
