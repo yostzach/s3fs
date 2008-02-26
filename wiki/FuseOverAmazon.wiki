@@ -67,7 +67,7 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
 
 If enabled via "use_cache" option, s3fs automatically maintains a local cache of files in the folder specified by use_cache. Whenever s3fs needs to read or write a file on s3 it first downloads the entire file locally to the folder specified by use_cache and operates on it. When fuse release() is called, s3fs will re-upload the file to s3 if it has been changed. s3fs uses md5 checksums to minimize downloads from s3.
 
-"~/.s3fs" is just a local cache. It can be deleted at any time. s3fs will rebuild it on demand.
+The folder specified by use_cache is just a local cache. It can be deleted at any time. s3fs re-builds it on demand.
 
 ~~New for svn 43: Local file cache is disabled and I might not bring it back. I originally added local file cache thinking it would help for rsync (and createrepo). It ends up rsync works reasonably well without it. For createrepo, just rsync back and forth!~~
 
