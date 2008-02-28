@@ -80,6 +80,10 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".
 
 = Release Notes =
+ * svn 117
+  * limit max-keys=20 (fixes 100% cpu bug?!?)
+ * svn 116
+  * added crypto locking
  * svn 114
   * curl_global_init
  * svn 107
