@@ -1,5 +1,5 @@
 #labels Featured
-FUSE filesystem backed by Amazon S3
+FUSE-based file system backed by Amazon S3
 
 = Overview =
 
