@@ -145,6 +145,8 @@ All s3 objects written by s3fs have a Content-Type of either "application/octet-
   * ~~A: you don't (for now)... use a softlink~~ -ouse_cache option *is* the path used for local file cache! e.g., /usr/bin/s3fs mybucket /s3 -ouse_cache=/tmp
  * Q: s3fs uses x-amz-meta custom meta headers... will s3fs clobber any existing x-amz-meta custom header headers?
   * A: No!
+ * Q: I renamed a folder and now all of the files in that folder are gone! What the?!?
+  * A: Rename it back and your files will be back. s3fs does not support deep directory rename and doesn't check for it either.
 
 = Limitations =
  * no permissions checking
