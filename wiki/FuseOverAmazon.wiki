@@ -10,7 +10,7 @@ Its quite useful and stable, e.g., can be used to easily copy daily backup tarba
 To use it:
 
  # get an amazon s3 account!
- # download the source, compile it (I've used fc5/ppc, f7/i386 and macosx 10.4) and slap the binary in, say, /usr/bin/s3fs
+ # download the source, compile it (I've used fc5/ppc, f7/i386 and Mac OS X 10.4) and slap the binary in, say, /usr/bin/s3fs
   ## you'll need at least fuse-2.6
   ## for fedora probably need to do: yum install fuse-devel
   ## for ubuntu probably need to do something like: sudo apt get fuse-libs (I think?!?)
