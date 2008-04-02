@@ -127,6 +127,7 @@ All s3 objects written by s3fs have a Content-Type of either "application/octet-
 
  * What do I need to know?
   * /usr/bin/s3fs
+  * /var/log/messages
   * an entry in /etc/fstab (optional)
   * the file /etc/passwd-s3fs (optional)
   * the folder specified by use_cache (optional) a local file cache automatically maintained by s3fs, enabled with "use_cache" option, e.g., -ouse_cache=/tmp
@@ -136,6 +137,7 @@ All s3 objects written by s3fs have a Content-Type of either "application/octet-
   * Are your credentials correct?
   * Is your local clock within 15 minutes of Amazon's? (RequestTimeTooSkewed)
  * How do I troubleshoot it?
+  * tail -f /var/log/messages
   * Use the fuse -f switch, e.g., /usr/bin/s3fs -f my_bucket /mnt
  * ~~Why do I see "Operation cannot be completed because you do not have sufficient privliges"~~
   * ~~you'll see this when a program you're using (e.g., tar, rsync) is trying to explicitly set the modification time of a file. s3fs currently does not support this. Contents of the file are ok, its just that the timestamp might not be what you're expecting. I'm working to fix this.~~ fixed in svn 43!
