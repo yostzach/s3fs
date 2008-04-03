@@ -179,3 +179,12 @@ All s3 objects written by s3fs have a Content-Type of either "application/octet-
  * better error logging for troubleshooting, e.g., syslog...
   * need to parse response on, say, 403 and 404 errors, etc... and log 'em!
  * ~~use temporary file for flush() and then stream it to amazon~~
+
+= See Also =
+
+Here is a list of other Amazon S3 filesystems:
+
+ * ElasticDrive
+ * PersistentFS
+ * https://fedorahosted.org/s3fs/
+ * http://code.google.com/p/s3fs-fuse/
