@@ -81,45 +81,45 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".
 
 = Release Notes =
- * svn 130
+ * r130
   * set uid/gid to whatever getuid()/getgid() returns
   * log some stuff to syslog (i.e., /var/log/messages)
   * fixed issue 14 (local file cache bug; fixed cp, rsync, etc...)
- * svn 117
+ * r117
   * limit max-keys=20 (workaround for libcurl's 100% cpu issue?!?)
- * svn 116
+ * r116
   * added crypto locking
- * svn 114
+ * r114
   * curl_global_init
- * svn 107
+ * r107
   * use CURLOPT_NOSIGNAL
- * svn 106
+ * r106
   * rewind on retry
- * svn 105
+ * r105
   * only send x-amz-acl and x-amz-meta headers
- * svn 101, 102, 103
+ * r101, r102, r103
   * fixed curl_multi_timeout bug (found on mac)
- * svn 99
+ * r99
   * added "default_acl" option
- * svn 92
+ * r92
   * parallel-ized readdir(): getting a directory listing is now a lot faster
- * svn 88
+ * r88
   * removed 10s read timeout that should not have been introduced
- * svn 72 2008-02-18
+ * r72 2008-02-18
   * use_cache now takes path to local file cache folder, e.g., /usr/bin/s3fs mybucket /s3 -ouse_cache=/tmp
- * svn 66 2008-02-18
+ * r66 2008-02-18
   * local file cache is back! however, it is disabled by default... use "use_cache" option, ~~e.g., /usr/bin/s3fs mybucket /s3 -ouse_cache=1~~
- * svn 57 2008-02-18
+ * r57 2008-02-18
   * a few bug fixes:
    * touch x-amz-meta-mtime in flush()
    * use INFILE_LARGE (libcurl) (found on fc5/ppc)
   * tidyup
- * svn 43 2008-02-17
+ * r43 2008-02-17
   * mode (i.e., chmod), mtime and deep rename! rsync now works!
   * temporarily disabled local file cache (might not bring it back!)
- * svn 28 2007-12-15
+ * r28 2007-12-15
   * retry on 500 server error
- * svn 27 2007-12-15
+ * r27 2007-12-15
   * file-based (instead of memory-based)
    * this means that s3fs will no longer allocate large memory buffers when writing files to s3
 
