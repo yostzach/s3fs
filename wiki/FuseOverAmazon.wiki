@@ -87,7 +87,7 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".
 
 = Release Notes =
- * r138
+ * r136, r138
   * connect_timeout and readwrite_timeout
  * r130
   * set uid/gid to whatever getuid()/getgid() returns
