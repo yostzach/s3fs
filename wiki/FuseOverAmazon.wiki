@@ -66,6 +66,12 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
  * *use_cache* (default="" which means disabled)
   * local folder to use for local file cache
 
+ * *connect_timeout* (default="2" seconds)
+  * time to wait for connection before giving up
+
+ * *readwrite_timeout* (default="10" seconds)
+  * time to wait between read/write activity before giving up
+
 = Details =
 
 If enabled via "use_cache" option, s3fs automatically maintains a local cache of files in the folder specified by use_cache. Whenever s3fs needs to read or write a file on s3 it first downloads the entire file locally to the folder specified by use_cache and operates on it. When fuse release() is called, s3fs will re-upload the file to s3 if it has been changed. s3fs uses md5 checksums to minimize downloads from s3.
@@ -81,7 +87,7 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".
 
 = Release Notes =
- * r136
+ * r138
   * connect_timeout and readwrite_timeout
  * r130
   * set uid/gid to whatever getuid()/getgid() returns
