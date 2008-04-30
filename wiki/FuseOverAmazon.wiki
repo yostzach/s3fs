@@ -72,6 +72,9 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
  * *readwrite_timeout* (default="10" seconds)
   * time to wait between read/write activity before giving up
 
+ * *url* (default="http://s3.amazonaws.com")
+  * sets the url to use to access amazon s3, e.g., if you want to use https then set url=https://s3.amazonaws.com
+
 = Details =
 
 If enabled via "use_cache" option, s3fs automatically maintains a local cache of files in the folder specified by use_cache. Whenever s3fs needs to read or write a file on s3 it first downloads the entire file locally to the folder specified by use_cache and operates on it. When fuse release() is called, s3fs will re-upload the file to s3 if it has been changed. s3fs uses md5 checksums to minimize downloads from s3.
