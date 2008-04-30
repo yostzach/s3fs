@@ -89,6 +89,8 @@ All s3 objects written by s3fs have a Content-Type of either "application/octet-
 = Release Notes =
  * r145
   * log svn version at startup via syslog /var/log/messages
+ * r141
+  * added "url" runtime parameter
  * r136, r138
   * connect_timeout and readwrite_timeout
  * r130
