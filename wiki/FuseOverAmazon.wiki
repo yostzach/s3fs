@@ -3,7 +3,7 @@ FUSE-based file system backed by Amazon S3
 
 = What's New =
 
- * May 8, 2008
+ * r152 (May 8, 2008)
   * uses x-amz-copy-source
    * rsync works faster!
   * by popular demand s3fs now sets the "correct" Content-type!
