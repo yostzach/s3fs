@@ -1,6 +1,16 @@
 #labels Featured
 FUSE-based file system backed by Amazon S3
 
+= What's New =
+
+* May 8, 2008
+ * uses x-amz-copy-source
+  * rsync works faster!
+ * by popular demand s3fs sets the "correct" Content-type type!
+  * when creating files, s3fs uses /etc/mime.types to set the "correct" mime type!
+ * supports symlinks!
+  * rsync works better!
+
 = Overview =
 
 s3fs is a [http://fuse.sourceforge.net fuse] filesystem that allows you to mount an Amazon S3 bucket as a local filesystem. It stores files natively and transparently in S3 (i.e., you can use other programs to access the same files). Maximum file size=5G.
@@ -154,6 +164,9 @@ All s3 objects written by s3fs have a Content-Type of either "application/octet-
   * an entry in /etc/fstab (optional)
   * the file /etc/passwd-s3fs (optional)
   * the folder specified by use_cache (optional) a local file cache automatically maintained by s3fs, enabled with "use_cache" option, e.g., -ouse_cache=/tmp
+  * the file /etc/mime.types
+   * map of file extensions to Content-types
+   * on Fedora /etc/mime.types comes from mailcap, so, you can either (a) create this file yourself or (b) do a yum install mailcap
   * stores files natively and transparently in amazon s3; you can access files with other tools, e.g., jets3t
  * Why do I get "Input/output error"?
   * Does the bucket exist?
