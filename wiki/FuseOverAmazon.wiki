@@ -96,6 +96,8 @@ All s3 objects written by s3fs have a Content-Type of either "application/octet-
   * use /etc/mime.types
  * r150
   * added support for uid/gid... chown works!
+ * r149
+  * support x-amz-copy-source... rsync much faster now!
  * r145
   * log svn version at startup via syslog /var/log/messages
  * r141
