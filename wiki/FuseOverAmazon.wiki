@@ -3,13 +3,13 @@ FUSE-based file system backed by Amazon S3
 
 = What's New =
 
-* May 8, 2008
- * uses x-amz-copy-source
-  * rsync works faster!
- * by popular demand s3fs sets the "correct" Content-type type!
-  * when creating files, s3fs uses /etc/mime.types to set the "correct" mime type!
- * supports symlinks!
-  * rsync works better!
+ * May 8, 2008
+  * uses x-amz-copy-source
+   * rsync works faster!
+  * by popular demand s3fs sets the "correct" Content-type type!
+   * when creating files, s3fs uses /etc/mime.types to set the "correct" mime type!
+  * supports symlinks!
+   * rsync works better!
 
 = Overview =
 
