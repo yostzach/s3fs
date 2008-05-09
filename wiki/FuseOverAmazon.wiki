@@ -41,18 +41,18 @@ then you can create a file "/etc/passwd-s3fs" with a line containing a accessKey
 
 You can have more than one set of credentials (i.e., credentials for more than one amazon s3 account) in /etc/passwd-s3fs in which case you'll have to specify -o accessKeyId=aaa on the command line.
 
-s3fs supports mode (e.g., chmod) and mtime (e.g, touch). s3fs stores mode and mtime in x-amz-meta custom meta headers, and as such does "brute-force" re-uploads of s3 objects if/when mode and/or mtime changes.
+s3fs supports mode (e.g., chmod), mtime (e.g, touch) and uid/gid (chown). s3fs stores the values in x-amz-meta custom meta headers, ~~and as such does "brute-force" re-uploads of s3 objects if/when mode and/or mtime changes.~~ and uses x-amz-copy-source to efficiently change them.
 
 s3fs has a caching mechanism: You can enable local file caching to minimize downloads, e.g., :
 {{{
 /usr/bin/s3fs mybucket /mnt -ouse_cache=/tmp
 }}}
 
-Hosting a cvsroot on s3 works! Although you probably don't really want to do it in practice. E.g., cvs -d /s3/cvsroot init.
+Hosting a cvsroot on s3 works! Although you probably don't really want to do it in practice. E.g., cvs -d /s3/cvsroot init. Incredibly, mysqld also works, although I doube you really wanna do that in practice! =)
 
 ~~Using rsync with an s3 volume as the destination doesn't quite work because of timestamp issues. s3fs does not (yet) support changing timestamps on files. I mean, it will work, as in it will copy files, but, the timestamps will just be current timestamps (rsync will complain about not being able to set timestamps but will continue).~~
 
-s3fs works with rsync! (as of svn 43) Due to the way FUSE works and s3fs' "brute-force" support of mode (chmod) and mtime (touch), upon first sync, files are downloaded/uploaded more than once (because rsync does (a) chmod (b) touch and (c) rename), however, subsequent rsyncs are pretty much as fast as can be. If that's too much downloading/downloading for ya then try using the "use_cache" option to enable the local file cache... it will definitely minimize the number of downloads.
+s3fs works with rsync! (as of svn 43) ~~Due to the way FUSE works and s3fs' "brute-force" support of mode (chmod) and mtime (touch), upon first sync, files are downloaded/uploaded more than once (because rsync does (a) chmod (b) touch and (c) rename), however, subsequent rsyncs are pretty much as fast as can be. If that's too much downloading/downloading for ya then try using the "use_cache" option to enable the local file cache... it will definitely minimize the number of downloads.~~ as of r152 s3fs uses x-amz-copy-source for efficient update of mode, mtime and uid/gid.
 
 s3fs will retry s3 transactions on certain error conditions. The default retry count is 2, i.e., s3fs will make 2 retries per s3 transaction (for a total of 3 attempts: 1st attempt + 2 retries) before giving up. You can set the retry count by using the "retries" option, e.g., "-oretries=2".
 
