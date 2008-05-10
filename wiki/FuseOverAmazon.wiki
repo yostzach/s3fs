@@ -101,7 +101,7 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 
 = Release Notes =
  * r152
-  * added support for symlinks... ln works!
+  * added support for symlinks... ln -s works!
  * r151
   * use /etc/mime.types
  * r150
