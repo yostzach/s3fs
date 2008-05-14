@@ -1,6 +1,8 @@
 #labels Featured
 FUSE-based file system backed by Amazon S3
 
+Note- EU buckets not yet supported
+
 = What's New =
 
  * r152 (May 8, 2008)
