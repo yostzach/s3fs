@@ -97,6 +97,8 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 ~~All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".~~ as of r152, s3fs now leverages /etc/mime.types to "guess" the "correct" content-type based on file name extension. This means that you can copy a website to s3 and serve it up directly from s3 with correct content-types!
 
 = Release Notes =
+ * r166
+  * case-insensitive lookup of content-type from /etc/mime.types
  * r152
   * added support for symlinks... ln -s works!
  * r151
