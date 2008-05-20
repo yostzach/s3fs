@@ -6,12 +6,7 @@ Note- EU buckets not yet supported?!?
 = What's New =
 
  * r152 (May 8, 2008)
-  * uses x-amz-copy-source
-   * rsync works faster!
-  * by popular demand s3fs now sets the "correct" Content-type!
-   * when creating files, s3fs uses /etc/mime.types to set the "correct" mime type!
-  * supports symlinks!
-   * rsync works better!
+  * uses x-amz-copy-source; "correct" content-type lookup via /etc/mime.types; symlinks!
 
 = Overview =
 
