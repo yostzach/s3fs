@@ -4,7 +4,7 @@ FUSE-based file system backed by Amazon S3
 Note- EU buckets not yet supported?!?
 
 = What's New =
-
+ * r166 case insensitive mime type lookup
  * r152 (May 8, 2008)
   * uses x-amz-copy-source; "correct" content-type lookup via /etc/mime.types; symlinks!
 
