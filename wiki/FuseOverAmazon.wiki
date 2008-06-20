@@ -211,7 +211,7 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
  * chmod support... acl
  * permissions: using -o allow_other, even though files are owned by root 0755, another use can make changes
   * use default_permissions option?!?
- * better error logging for troubleshooting, e.g., syslog...
+ * better error logging for troubleshooting, ~~e.g., syslog...~~
   * need to parse response on, say, 403 and 404 errors, etc... and log 'em!
  * ~~use temporary file for flush() and then stream it to amazon~~
 
