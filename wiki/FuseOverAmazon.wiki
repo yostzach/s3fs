@@ -193,7 +193,7 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 = Limitations =
  * no permissions checking
  * ~~no chmod support: all files are 0775~~ fixed in svn 43!
- * no symlink support
+ * ~~no symlink support~~ added in r152
  * ~~rename is "supported" by virtue of returning EXDEV from rename()~~ fixed in svn 43! svn 43 supports deep renaming of files
  * ~~ when writing files: requires as much memory as the size of the largest file you're writing (this can be easily fixed) ~~ fixed (svn 27) you should now be able to copy, say, a 2GB file to s3 without having s3fs malloc 2GB of memory!
  * deep rename directories?!?
@@ -201,7 +201,7 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 = ToDo =
 
  * ~~support brute-force rename~~ fixed in svn 43
- * get symlinks working?
+ * ~~get symlinks working?~~ added in r152
   * ~~ this would bog down performance: would have to do deep getattr() for every single object ~~ already doing this in svn 43... its not too bad!
  * make install target
  * get "-h" help working
