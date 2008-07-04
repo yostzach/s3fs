@@ -223,3 +223,4 @@ Here is a list of other Amazon S3 filesystems:
  * PersistentFS
  * https://fedorahosted.org/s3fs/
  * http://code.google.com/p/s3fs-fuse/
+ * http://s3backer.googlecode.com
