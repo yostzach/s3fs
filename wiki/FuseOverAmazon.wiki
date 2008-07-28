@@ -61,7 +61,7 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
 
  * *default_acl* (default="private")
   * the default canned acl to apply to all written s3 objects, e.g., "public-read"
-  ** see http://docs.amazonwebservices.com/AmazonS3/2006-03-01/index.html?RESTAccessPolicy.html "Canned Access Policies" for the full list of canned acls
+   * see http://docs.amazonwebservices.com/AmazonS3/2006-03-01/index.html?RESTAccessPolicy.html "Canned Access Policies" for the full list of canned acls
   * any created files will have this canned acl
   * any updated files will also have this canned acl applied!
 
