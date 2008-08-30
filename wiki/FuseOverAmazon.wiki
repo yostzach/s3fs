@@ -1,7 +1,7 @@
 #labels Featured
 FUSE-based file system backed by Amazon S3
 
-*For a pre-compiled commercially supported variant of s3fs see* http://www.subcloud.com.
+*For a pre-compiled commercially supported enhanced variant of s3fs see* http://www.subcloud.com.
 
 = What's New =
  * r177 fixed stale curl handle issue; fixed 100% cpu issue
