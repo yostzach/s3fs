@@ -4,6 +4,7 @@ FUSE-based file system backed by Amazon S3
 For a commercially supported version with additional features see http://www.subcloud.com
 
 = What's New =
+ * r188 includes eucalyptus patch http://open.eucalyptus.com/wiki/s3fs
  * r177 fixed stale curl handle issue; fixed 100% cpu issue
  * r166 case insensitive mime type lookup
  * r152 (May 8, 2008)
