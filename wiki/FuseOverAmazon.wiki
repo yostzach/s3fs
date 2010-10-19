@@ -4,6 +4,7 @@ FUSE-based file system backed by Amazon S3
 For a commercially supported version with additional features see http://www.subcloud.com
 
 = What's New =
+ * r203 several fixes and enhancements - see release notes (below) to see all what has changed
  * r191 merged in tractis eu bucket changes http://github.com/tractis/s3fs-fork
  * r188 includes eucalyptus patch http://open.eucalyptus.com/wiki/s3fs
  * r177 fixed stale curl handle issue; fixed 100% cpu issue
@@ -77,6 +78,9 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
  * *use_cache* (default="" which means disabled)
   * local folder to use for local file cache
 
+ * *use_rrs* (default="" which means diabled)
+  * use Amazon's Reduced Redundancy Storage
+
  * *connect_timeout* (default="2" seconds)
   * time to wait for connection before giving up
 
@@ -101,6 +105,20 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 ~~All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".~~ as of r152, s3fs now leverages /etc/mime.types to "guess" the "correct" content-type based on file name extension. This means that you can copy a website to s3 and serve it up directly from s3 with correct content-types!
 
 = Release Notes =
+ * r203
+  * fail with error when bucket with upper case characters is attempted to be mounted
+ * r202
+  * fixed bug associated with url = "https://"
+ * r201
+  * rmdir now cannot delete a non-empty directory
+ * r200
+  * support for Reduced Redundancy Storage
+ * r198
+  * rsync without the --inplace option now creates the correct content-type metadata
+ * r197
+  * removed compile time warning with respect to unused function
+ * r195
+  * fixed argument ordering with initialization of fuse_operations data structure 
  * r166
   * case-insensitive lookup of content-type from /etc/mime.types
  * r152
