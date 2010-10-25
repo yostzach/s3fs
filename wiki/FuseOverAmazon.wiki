@@ -4,6 +4,7 @@ FUSE-based file system backed by Amazon S3
 For a commercially supported version with additional features see http://www.subcloud.com
 
 = What's New =
+ * s3fs-1.0.tar.gz (r217) GNU-type distribution including a couple of issue fixes
  * r203 several fixes and enhancements - see release notes (below) to see all what has changed
  * r191 merged in tractis eu bucket changes http://github.com/tractis/s3fs-fork
  * r188 includes eucalyptus patch http://open.eucalyptus.com/wiki/s3fs
@@ -105,6 +106,12 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 ~~All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".~~ as of r152, s3fs now leverages /etc/mime.types to "guess" the "correct" content-type based on file name extension. This means that you can copy a website to s3 and serve it up directly from s3 with correct content-types!
 
 = Release Notes =
+ * r217
+  * basis for s3fs-1.0.tar.gz
+ * r213
+  * added command line --version option
+ * r209
+  * converted to Autotools
  * r203
   * fail with error when bucket with upper case characters is attempted to be mounted
  * r202
