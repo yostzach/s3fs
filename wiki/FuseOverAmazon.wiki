@@ -4,6 +4,7 @@ FUSE-based file system backed by Amazon S3
 For a commercially supported version with additional features see http://www.subcloud.com
 
 = What's New =
+ * s3fs-1.01.tar.gz (r221) Added support for anonymously mounting public buckets
  * s3fs-1.0.tar.gz (r217) GNU-type distribution including a couple of issue fixes
  * r203 several fixes and enhancements - see release notes (below) to see all what has changed
  * r191 merged in tractis eu bucket changes http://github.com/tractis/s3fs-fork
@@ -81,6 +82,9 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
 
  * *use_rrs* (default="" which means diabled)
   * use Amazon's Reduced Redundancy Storage
+
+ * *public_bucket (default="" which means disabled)
+  * anonymously mount a public bucket when set to 1, ignores command line options accessKeyId and secretAccessKey, as well as the /etc/passwd-s3fs file
 
  * *connect_timeout* (default="2" seconds)
   * time to wait for connection before giving up
