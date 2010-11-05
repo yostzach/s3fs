@@ -1,6 +1,8 @@
 #labels Featured
 FUSE-based file system backed by Amazon S3
 
+*Announcement: Please submit usage/support questions to the [http://code.google.com/p/s3fs/issues/list Issues] area instead of as a comment this Wiki page. Thanks!*
+
 For a commercially supported version with additional features see http://www.subcloud.com
 
 = What's New =
