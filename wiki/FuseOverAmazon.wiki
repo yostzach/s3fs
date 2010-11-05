@@ -1,7 +1,7 @@
 #labels Featured
 FUSE-based file system backed by Amazon S3
 
-*Announcement: Please submit usage/support questions to the [http://code.google.com/p/s3fs/issues/list Issues] area instead of as a comment this Wiki page. Thanks!*
+*Announcement: Please submit usage/support questions to the [http://code.google.com/p/s3fs/issues/list Issues] area instead of as a comment to this Wiki page. Thanks!*
 
 For a commercially supported version with additional features see http://www.subcloud.com
 
@@ -85,7 +85,7 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
  * *use_rrs* (default="" which means diabled)
   * use Amazon's Reduced Redundancy Storage
 
- * *public_bucket (default="" which means disabled)
+ * *public_bucket* (default="" which means disabled)
   * anonymously mount a public bucket when set to 1, ignores command line options accessKeyId and secretAccessKey, as well as the /etc/passwd-s3fs file
 
  * *connect_timeout* (default="2" seconds)
