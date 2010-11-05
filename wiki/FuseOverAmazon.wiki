@@ -195,7 +195,7 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
  * What do I need to know?
   * /usr/bin/s3fs
   * /var/log/messages
-  * an entry in /etc/fstab (optional)
+  * an entry in /etc/fstab (optional - * requires fuse to be fully installed * issue #115)
   * the file /etc/passwd-s3fs (optional)
   * the folder specified by use_cache (optional) a local file cache automatically maintained by s3fs, enabled with "use_cache" option, e.g., -ouse_cache=/tmp
   * the file /etc/mime.types
