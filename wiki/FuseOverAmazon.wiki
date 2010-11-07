@@ -6,6 +6,7 @@ FUSE-based file system backed by Amazon S3
 For a commercially supported version with additional features see http://www.subcloud.com
 
 = What's New =
+ * s3fs-1.10.tar.gz (r227) Credentials can now be supplied via environment variables, .passwd-s3fs file in the users home directory or by a file specified by a command line option.  Useful --help option. Command line error checking.
  * s3fs-1.01.tar.gz (r221) Added support for anonymously mounting public buckets
  * s3fs-1.0.tar.gz (r217) GNU-type distribution including a couple of issue fixes
  * r203 several fixes and enhancements - see release notes (below) to see all what has changed
@@ -37,14 +38,20 @@ To use it:
 
 That's it! the contents of your amazon bucket "mybucket" should now be accessible read/write in /mnt
 
-If you don't like specifying your secretAccessKey on the command line
-then you can create a file "/etc/passwd-s3fs" with a line containing a accessKeyId:secretAccessKey pair. Then the command line becomes simply:
+If you don't like specifying your secretAccessKey on the command line then you have several options (in order of precedence):
+ * using the passwd_file command line option
+ * setting the AWSACCESSKEYID and AWSSECRETACCESSKEY environment variables
+ * using a .passwd-s3fs file in your home directory
+ * using the system-wide /etc/passwd-s3fs file
+
+If you use the environment variables or if you create a file "$HOME/.passwd-s3fs" or "/etc/passwd-s3fs" with a line containing a accessKeyId:secretAccessKey pair. Then the command line becomes simply:
 
 {{{
 /usr/bin/s3fs mybucket /mnt
 }}}
+ 
 
-You can have more than one set of credentials (i.e., credentials for more than one amazon s3 account) in /etc/passwd-s3fs in which case you'll have to specify -o accessKeyId=aaa on the command line.
+~~You can have more than one set of credentials (i.e., credentials for more than one amazon s3 account) in /etc/passwd-s3fs in which case you'll have to specify -o accessKeyId=aaa on the command line.~~ this isn't currently supported
 
 s3fs supports mode (e.g., chmod), mtime (e.g, touch) and uid/gid (chown). s3fs stores the values in x-amz-meta custom meta headers, ~~and as such does "brute-force" re-uploads of s3 objects if/when mode and/or mtime changes.~~ and uses x-amz-copy-source to efficiently change them.
 
@@ -85,8 +92,11 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
  * *use_rrs* (default="" which means diabled)
   * use Amazon's Reduced Redundancy Storage
 
+ * *passwd_file* (default="")
+  * specify the path to the password file, over-rides looking for the password in in $HOME/.passwd-s3fs and /etc/passwd-s3fs
+
  * *public_bucket* (default="" which means disabled)
-  * anonymously mount a public bucket when set to 1, ignores command line options accessKeyId and secretAccessKey, as well as the /etc/passwd-s3fs file
+  * anonymously mount a public bucket when set to 1, ignores command line options accessKeyId and secretAccessKey, as well as the $HOME/.passwd-s3fs and /etc/passwd-s3fs files
 
  * *connect_timeout* (default="2" seconds)
   * time to wait for connection before giving up
@@ -112,6 +122,8 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 ~~All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".~~ as of r152, s3fs now leverages /etc/mime.types to "guess" the "correct" content-type based on file name extension. This means that you can copy a website to s3 and serve it up directly from s3 with correct content-types!
 
 = Release Notes =
+ * r227
+  * basis for s3fs-1.10.tar.gz
  * r217
   * basis for s3fs-1.0.tar.gz
  * r213
@@ -196,7 +208,7 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
   * /usr/bin/s3fs
   * /var/log/messages
   * an entry in /etc/fstab (optional - * requires fuse to be fully installed * issue #115)
-  * the file /etc/passwd-s3fs (optional)
+  * the file $HOME/.passwd-s3fs or /etc/passwd-s3fs (optional)
   * the folder specified by use_cache (optional) a local file cache automatically maintained by s3fs, enabled with "use_cache" option, e.g., -ouse_cache=/tmp
   * the file /etc/mime.types
    * map of file extensions to Content-types
@@ -238,8 +250,8 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
  * ~~support brute-force rename~~ fixed in svn 43
  * ~~get symlinks working?~~ added in r152
   * ~~ this would bog down performance: would have to do deep getattr() for every single object ~~ already doing this in svn 43... its not too bad!
- * make install target
- * get "-h" help working
+ * ~~ make install target ~~
+ * ~~ get "-h" help working ~~
  * ~~ handle utime so that rsync works! ~~ fixed in svn 43!
   * ~~ probably a bad idea after all... ~~
   * ~~ actually don't think it can be done: can't specify arbitrary create-time for PUT ~~
