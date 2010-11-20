@@ -1,0 +1,34 @@
+#summary Installation Notes
+#labels Featured
+
+= General Instructions =
+
+== From released tarball ==
+
+
+== From subversion repository ==
+
+
+
+= Notes for Specific Operating Systems =
+
+== Debian / Ubuntu ==
+
+
+== Fedora ==
+
+Tested on Fedora 14 Desktop Edition
+
+Install prerequisites before compiling:
+  * yum install gcc
+  * yum install libstdc++-devel
+  * yum install gcc-c++
+  * yum install fuse
+  * yum install fuse-devel
+  * yum install curl-devel
+  * yum install libxml2-devel
+  * yum install openssl-devel
+  * yum install mailcap
+
+
+ 
