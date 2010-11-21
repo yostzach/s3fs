@@ -6,6 +6,7 @@ FUSE-based file system backed by Amazon S3
 For a commercially supported version with additional features see http://www.subcloud.com
 
 = What's New =
+ * r243 command line options accessKeyId and secretAccessKey are no longer supported
  * s3fs-1.10.tar.gz (r227) Credentials can now be supplied via environment variables, .passwd-s3fs file in the users home directory or by a file specified by a command line option.  Useful --help option. Command line error checking.
  * s3fs-1.01.tar.gz (r221) Added support for anonymously mounting public buckets
  * s3fs-1.0.tar.gz (r217) GNU-type distribution including a couple of issue fixes
@@ -25,33 +26,28 @@ s3fs is stable and is being used in number of production environments, e.g., rsy
 
 To use it:
 
- # get an amazon s3 account!
+ # get an amazon s3 account! http://aws.amazon.com/s3/
  # download the source, compile it (I've used fc5/ppc, f7/i386, f9/x86, f9/x64 and Mac OS X 10.4) and slap the binary in, say, /usr/bin/s3fs
   ## you'll need at least fuse-2.6
   ## for fedora probably need to do: yum install fuse-devel
   ## for ubuntu probably need to do something like: sudo apt get fuse-libs (I think?!?)
- # do this:
-
-{{{
-/usr/bin/s3fs mybucket -o accessKeyId=aaa -o secretAccessKey=bbb /mnt
-}}}
-
-That's it! the contents of your amazon bucket "mybucket" should now be accessible read/write in /mnt
-
-If you don't like specifying your secretAccessKey on the command line then you have several options (in order of precedence):
+ # Specify your Security Credentials (Access Key ID & Secret Access Key) by one of the following methods:
  * using the passwd_file command line option
  * setting the AWSACCESSKEYID and AWSSECRETACCESSKEY environment variables
  * using a .passwd-s3fs file in your home directory
  * using the system-wide /etc/passwd-s3fs file
-
-If you use the environment variables or if you create a file "$HOME/.passwd-s3fs" or "/etc/passwd-s3fs" with a line containing a accessKeyId:secretAccessKey pair. Then the command line becomes simply:
+ # do this:
 
 {{{
 /usr/bin/s3fs mybucket /mnt
 }}}
+
+That's it! the contents of your amazon bucket "mybucket" should now be accessible read/write in /mnt
  
 
-~~You can have more than one set of credentials (i.e., credentials for more than one amazon s3 account) in /etc/passwd-s3fs in which case you'll have to specify -o accessKeyId=aaa on the command line.~~ this isn't currently supported
+You can have more than one set of credentials. In the s3fs password file, the format is as follows:
+
+[bucket:]accessKeyId:secretAccessKey
 
 s3fs supports mode (e.g., chmod), mtime (e.g, touch) and uid/gid (chown). s3fs stores the values in x-amz-meta custom meta headers, ~~and as such does "brute-force" re-uploads of s3 objects if/when mode and/or mtime changes.~~ and uses x-amz-copy-source to efficiently change them.
 
@@ -69,10 +65,6 @@ s3fs works with rsync! (as of svn 43) ~~Due to the way FUSE works and s3fs' "bru
 s3fs will retry s3 transactions on certain error conditions. The default retry count is 2, i.e., s3fs will make 2 retries per s3 transaction (for a total of 3 attempts: 1st attempt + 2 retries) before giving up. You can set the retry count by using the "retries" option, e.g., "-oretries=2".
 
 = Options =
-
- * *accessKeyId*
-
- * *secretAccessKey*
 
  * *default_acl* (default="private")
   * the default canned acl to apply to all written s3 objects, e.g., "public-read"
@@ -96,7 +88,7 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
   * specify the path to the password file, over-rides looking for the password in in $HOME/.passwd-s3fs and /etc/passwd-s3fs
 
  * *public_bucket* (default="" which means disabled)
-  * anonymously mount a public bucket when set to 1, ignores command line options accessKeyId and secretAccessKey, as well as the $HOME/.passwd-s3fs and /etc/passwd-s3fs files
+  * anonymously mount a public bucket when set to 1, ignores the $HOME/.passwd-s3fs and /etc/passwd-s3fs files
 
  * *connect_timeout* (default="2" seconds)
   * time to wait for connection before giving up
@@ -122,6 +114,22 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 ~~All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".~~ as of r152, s3fs now leverages /etc/mime.types to "guess" the "correct" content-type based on file name extension. This means that you can copy a website to s3 and serve it up directly from s3 with correct content-types!
 
 = Release Notes =
+ * r243
+  * eliminate options for specifying credentials on the command line
+ * r241
+  * more error checking - if connected to the network, check for valid credentials and the bucket name is valid
+ * r240
+  * re-enable the the -f command line option (disables FUSE daemon mode)
+ * r235
+  * add debug option to send debug messages to syslog
+ * r233
+  * check for too liberal permissions on password file
+ * r231
+  * more robust error checking
+ * r230
+  * add "make check" target
+ * r229
+  * added support for multiple credentials
  * r227
   * basis for s3fs-1.10.tar.gz
  * r217
@@ -227,7 +235,7 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
   * Try updating your version of libcurl: I've used 7.16 and 7.17
  * Q: when I mount a bucket only the current user can see it; other users cannot; how do I allow other users to see it? A: use 'allow_other'
   * /usr/bin/s3fs -o allow_other mybucket /mnt
-  * or from /etc/fstab: s3fs#mybucket /mnt fuse allow_other,accessKeyId=aaa,secretAccessKey=bbb 0 0
+  * or from /etc/fstab: s3fs#mybucket /mnt fuse allow_other 0 0
  * Q: How does the local file cache work?
   * A: It is unbounded! if you want you can use a cron job (e.g., script in /etc/cron.daily) to periodically purge "~/.s3fs"... due to the reference nature of posix file systems a periodic purge will *not* interfere with the normal operation of s3fs local file cache...!
  * ~~Q: How do I change the location of the "~/.s3fs" folder?~~
