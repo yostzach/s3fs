@@ -18,6 +18,12 @@ Download size: 125532 <br>
 
 == From subversion repository ==
 
+  * svn checkout http://s3fs.googlecode.com/svn/trunk/ s3fs
+  * cd s3fs/
+  * autoreconf --install (or ./autogen.sh)
+  * ./configure --prefix=/usr
+  * make
+  * make install (as root)
 
 
 = Notes for Specific Operating Systems =
@@ -41,4 +47,3 @@ Install prerequisites before compiling:
   * yum install mailcap
 
 
- 
