@@ -44,7 +44,7 @@ That's it! the contents of your amazon bucket "mybucket" should now be accessibl
 
 You can have more than one set of credentials. In the s3fs password file, the format is as follows:
 
-[bucket:]accessKeyId:secretAccessKey
+`[bucket:]accessKeyId:secretAccessKey`
 
 s3fs supports mode (e.g., chmod), mtime (e.g, touch) and uid/gid (chown). s3fs stores the values in x-amz-meta custom meta headers, ~~and as such does "brute-force" re-uploads of s3 objects if/when mode and/or mtime changes.~~ and uses x-amz-copy-source to efficiently change them.
 
