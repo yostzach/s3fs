@@ -26,12 +26,8 @@ s3fs is stable and is being used in number of production environments, e.g., rsy
 
 To use it:
 
- # get an amazon s3 account! http://aws.amazon.com/s3/
- # Install (see InstallationNotes)
- # download the source, compile it (I've used fc5/ppc, f7/i386, f9/x86, f9/x64 and Mac OS X 10.4) and slap the binary in, say, /usr/bin/s3fs
-  ## you'll need at least fuse-2.6
-  ## for fedora probably need to do: yum install fuse-devel
-  ## for ubuntu probably need to do something like: sudo apt get fuse-libs (I think?!?)
+ # Get an Amazon S3 account! http://aws.amazon.com/s3/
+ # Download, compile and install. (see InstallationNotes)
  # Specify your Security Credentials (Access Key ID & Secret Access Key) by one of the following methods:
  * using the passwd_file command line option
  * setting the AWSACCESSKEYID and AWSSECRETACCESSKEY environment variables
