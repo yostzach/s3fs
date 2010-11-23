@@ -5,9 +5,9 @@
 
 == From released tarball ==
 
-Download: http://code.google.com/p/s3fs/source/browse/tarballs/s3fs-1.10.tar.gz
-Download SHA1 checksum: fa9b3a93148b0a6b6ab207699e4466935d07d7cb
-Download size: 125532
+Download: http://code.google.com/p/s3fs/source/browse/tarballs/s3fs-1.10.tar.gz <br>
+Download SHA1 checksum: fa9b3a93148b0a6b6ab207699e4466935d07d7cb <br>
+Download size: 125532 <br>
 
   * tar xvzf s3fs-1.10.tar.gz
   * cd s3fs-1.10/
