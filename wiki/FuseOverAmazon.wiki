@@ -39,12 +39,15 @@ To use it:
 /usr/bin/s3fs mybucket /mnt
 }}}
 
-That's it! the contents of your amazon bucket "mybucket" should now be accessible read/write in /mnt
- 
+That's it! the contents of your amazon bucket "mybucket" should now be accessible read/write in /mnt<br>
+<br>
+The s3fs password file has this format (use this format if you have only one set of credentials):
 
-You can have more than one set of credentials. In the s3fs password file, the format is as follows:
+`accessKeyId:secretAccessKey`
 
-`[bucket:]accessKeyId:secretAccessKey`
+If have more than one set of credentials, then you can have default credentials as specified above, but this syntax will be recognized as well: 
+
+`bucketName:accessKeyId:secretAccessKey`
 
 s3fs supports mode (e.g., chmod), mtime (e.g, touch) and uid/gid (chown). s3fs stores the values in x-amz-meta custom meta headers, ~~and as such does "brute-force" re-uploads of s3 objects if/when mode and/or mtime changes.~~ and uses x-amz-copy-source to efficiently change them.
 
