@@ -31,9 +31,9 @@ Download size: 131616 <br>
 == Debian / Ubuntu ==
 
 
-== Fedora ==
+== Fedora / CentOS ==
 
-Tested on Fedora 14 Desktop Edition
+Tested on Fedora 14 Desktop Edition and CentOS 5.5
 
 Install prerequisites before compiling:
   * yum install gcc
@@ -45,5 +45,3 @@ Install prerequisites before compiling:
   * yum install libxml2-devel
   * yum install openssl-devel
   * yum install mailcap
-
-
