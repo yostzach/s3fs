@@ -30,6 +30,16 @@ Download size: 131616 <br>
 
 == Debian / Ubuntu ==
 
+Tested on Ubuntu 10.10
+
+Install prerequisites before compiling:
+ * apt-get install build-essential
+ * apt-get install libfuse-dev
+ * apt-get install fuse-utils
+ * apt-get install libcurl4-openssl-dev
+ * apt-get install libxml2-dev
+ * apt-get install mime-support 
+
 
 == Fedora / CentOS ==
 
