@@ -6,6 +6,8 @@ FUSE-based file system backed by Amazon S3
 For a commercially supported version with additional features see http://www.subcloud.com
 
 = What's New =
+ * s3fs-1.19.tar.gz (r271) 
+ * s3fs-1.16.tar.gz (r256)  
  * r243 command line options accessKeyId and secretAccessKey are no longer supported
  * s3fs-1.10.tar.gz (r227) Credentials can now be supplied via environment variables, .passwd-s3fs file in the users home directory or by a file specified by a command line option.  Useful --help option. Command line error checking.
  * s3fs-1.01.tar.gz (r221) Added support for anonymously mounting public buckets
@@ -120,6 +122,12 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 ~~All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".~~ as of r152, s3fs now leverages /etc/mime.types to "guess" the "correct" content-type based on file name extension. This means that you can copy a website to s3 and serve it up directly from s3 with correct content-types!
 
 = Release Notes =
+ * r270
+  * fixed issue #128 - problem with https on Fedora 
+ * r269
+  * fixed issue #125 - problem with https on CentOS 
+ * r265
+  * https - trap bad certificate issue during service_check
  * r243
   * eliminate options for specifying credentials on the command line
  * r241
