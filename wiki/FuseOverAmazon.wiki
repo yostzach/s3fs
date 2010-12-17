@@ -122,6 +122,17 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 ~~All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".~~ as of r152, s3fs now leverages /etc/mime.types to "guess" the "correct" content-type based on file name extension. This means that you can copy a website to s3 and serve it up directly from s3 with correct content-types!
 
 = Release Notes =
+ * r281
+  * minimum version for FUSE is now 2.8.4
+  * changed curl write-to-memory callback function
+  * eliminated a couple of memory leaks 
+  * added more debug code
+ * r280
+  * service error codes from libcurl more appropriately 
+ * r275
+  * better error messages during check_service function
+ * r274
+  * added FUSE's -s option back in
  * r270
   * fixed issue #128 - problem with https on Fedora 
  * r269
