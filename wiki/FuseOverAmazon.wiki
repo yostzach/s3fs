@@ -6,6 +6,7 @@ FUSE-based file system backed by Amazon S3
 For a commercially supported version with additional features see http://www.subcloud.com
 
 = What's New =
+ * s3fs-1.25.tar.gz (r282) *FUSE 2.8.4 or newer is required* see issues #136 and #138
  * s3fs-1.19.tar.gz (r271) 
  * s3fs-1.16.tar.gz (r256)  
  * r243 command line options accessKeyId and secretAccessKey are no longer supported
