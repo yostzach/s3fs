@@ -6,6 +6,7 @@ FUSE-based file system backed by Amazon S3
 For a commercially supported version with additional features see http://www.subcloud.com
 
 = What's New =
+ * [http://s3fs.googlecode.com/files/s3fs-1.30.tar.gz s3fs-1.30.tar.gz] (r290) *Directory Rename! - eliminated memory leaks*
  * s3fs-1.25.tar.gz (r282) *FUSE 2.8.4 or newer is required* see issues [http://code.google.com/p/s3fs/issues/detail?id=136 #136] and [http://code.google.com/p/s3fs/issues/detail?id=138 #138]
  * s3fs-1.19.tar.gz (r271) 
  * s3fs-1.16.tar.gz (r256)  
@@ -123,6 +124,14 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 ~~All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".~~ as of r152, s3fs now leverages /etc/mime.types to "guess" the "correct" content-type based on file name extension. This means that you can copy a website to s3 and serve it up directly from s3 with correct content-types!
 
 = Release Notes =
+
+ * [http://code.google.com/p/s3fs/source/detail?r=289 r289]
+  * fixed issue #17 - implement directory rename 
+  * fixed issue #18 - implement create() function
+ * [http://code.google.com/p/s3fs/source/detail?r=287 r287]
+  * fixed issue #6 - accounted for short write on BIO_write 
+ * [http://code.google.com/p/s3fs/source/detail?r=285 r285]
+  * Fixed memory leak issues   
  * r281
   * minimum version for FUSE is now 2.8.4
   * changed curl write-to-memory callback function
