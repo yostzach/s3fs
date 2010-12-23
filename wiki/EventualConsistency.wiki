@@ -1,0 +1,17 @@
+#summary What every s3fs user needs to know about S3's propagation delay
+#labels Featured
+
+= Introduction =
+
+Rather than rehash what has been published before on this subject, please read and _understand_ the following material:
+
+  * [http://shlomoswidler.com/2009/12/read-after-write-consistency-in-amazon.html A Good Explaination of Eventual Consistency]
+  * [http://code.google.com/p/s3fs/issues/detail?id=61 Issue 61: Eventual Consistency : Creating many small files fails]
+
+*For the lazy* : After creation of a file, it may not be immediately available for any subsequent file operation, s3fs may return HTTP 404 (File not found) errors.
+
+
+= Mitigation =
+
+  * Use a US-West or EU bucket - higher cost, but resolves "read-after-write" consistency issues
+  * Understand that this condition exists and deal with it -- *don't have the expectations of s3fs as you would of other filesystems* (e.g. you might have to run your rsync again)
