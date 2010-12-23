@@ -123,6 +123,18 @@ Local file caching works by calculating and comparing md5 checksums (ETag HTTP h
 
 ~~All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".~~ as of r152, s3fs now leverages /etc/mime.types to "guess" the "correct" content-type based on file name extension. This means that you can copy a website to s3 and serve it up directly from s3 with correct content-types!
 
+= Important Limitations =
+== Eventual Consistency ==
+Due to S3's "eventual consistency" limitations file creation can and will
+occasionally fail. Even after a successful create subsequent reads can fail for an
+indeterminate time, even after one or more successful reads. Create and read enough
+files and you will eventually encounter this failure. This is not a flaw in s3fs and
+it is not something a FUSE wrapper like s3fs can work around. The retries option does
+not address this issue. Your application must either tolerate or compensate for these
+failures, for example by retrying creates or reads. For more details, 
+see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency]
+
+
 = Release Notes =
 
  * [http://code.google.com/p/s3fs/source/detail?r=289 r289]
