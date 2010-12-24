@@ -28,6 +28,8 @@ s3fs is a [http://fuse.sourceforge.net fuse] filesystem that allows you to mount
 
 s3fs is stable and is being used in number of production environments, e.g., rsync backup to s3.
 
+*Important Note:* Your kernel *must* support FUSE, kernels earlier than 2.6.18-164 may not have FUSE support (see issue #140).  Virtual Private Servers (VPS) may not have FUSE support compiled into their kernels.
+
 To use it:
 
  # Get an Amazon S3 account! http://aws.amazon.com/s3/
