@@ -6,6 +6,7 @@ FUSE-based file system backed by Amazon S3
 For a commercially supported version with additional features see http://www.subcloud.com
 
 = What's New =
+ * [http://s3fs.googlecode.com/files/s3fs-1.33.tar.gz s3fs-1.33.tar.gz] (r299) Now uses multipart upload for big (> 20MB) files 
  * [http://s3fs.googlecode.com/files/s3fs-1.30.tar.gz s3fs-1.30.tar.gz] (r290) *Directory Rename! - eliminated memory leaks*
  * s3fs-1.25.tar.gz (r282) *FUSE 2.8.4 or newer is required* see issues [http://code.google.com/p/s3fs/issues/detail?id=136 #136] and [http://code.google.com/p/s3fs/issues/detail?id=138 #138]
  * s3fs-1.19.tar.gz (r271) 
@@ -24,7 +25,7 @@ For a commercially supported version with additional features see http://www.sub
 
 = Overview =
 
-s3fs is a [http://fuse.sourceforge.net fuse] filesystem that allows you to mount an Amazon S3 bucket as a local filesystem. It stores files natively and transparently in S3 (i.e., you can use other programs to access the same files). Maximum file size=5G.
+s3fs is a [http://fuse.sourceforge.net FUSE] filesystem that allows you to mount an Amazon S3 bucket as a local filesystem. It stores files natively and transparently in S3 (i.e., you can use other programs to access the same files). Maximum file size=2GB (limited by s3fs, not Amazon).
 
 s3fs is stable and is being used in number of production environments, e.g., rsync backup to s3.
 
@@ -139,6 +140,8 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
 
 = Release Notes =
 
+ * [http://code.google.com/p/s3fs/source/detail?r=298 r298]
+  * implemented multipart upload for files > 20MB
  * [http://code.google.com/p/s3fs/source/detail?r=289 r289]
   * fixed issue #17 - implement directory rename 
   * fixed issue #18 - implement create() function
@@ -300,7 +303,7 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
  * ~~no symlink support~~ added in r152
  * ~~rename is "supported" by virtue of returning EXDEV from rename()~~ fixed in svn 43! svn 43 supports deep renaming of files
  * ~~ when writing files: requires as much memory as the size of the largest file you're writing (this can be easily fixed) ~~ fixed (svn 27) you should now be able to copy, say, a 2GB file to s3 without having s3fs malloc 2GB of memory!
- * deep rename directories?!?
+ * ~~ deep rename directories?!? ~~
 
 = ToDo =
 
