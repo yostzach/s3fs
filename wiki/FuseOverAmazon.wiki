@@ -102,10 +102,10 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
  * *public_bucket* (default="" which means disabled)
   * anonymously mount a public bucket when set to 1, ignores the $HOME/.passwd-s3fs and /etc/passwd-s3fs files
 
- * *connect_timeout* (default="2" seconds)
+ * *connect_timeout* (default="10" seconds)
   * time to wait for connection before giving up
 
- * *readwrite_timeout* (default="10" seconds)
+ * *readwrite_timeout* (default="30" seconds)
   * time to wait between read/write activity before giving up
 
  * *url* (default="http://s3.amazonaws.com")
