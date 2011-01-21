@@ -5,12 +5,12 @@
 
 == From released tarball ==
 
-Download: http://s3fs.googlecode.com/files/s3fs-1.33.tar.gz <br>
-Download SHA1 checksum: 24e25e23f8ebddcc92358f796a403197e57f62ef <br>
-Download size: 144987 <br>
+Download: http://s3fs.googlecode.com/files/s3fs-1.35.tar.gz <br>
+Download SHA1 checksum: ee337cec881219f813241daa1b16b8325b842a12 <br>
+Download size: 144185 <br>
 
-  * tar xvzf s3fs-1.33.tar.gz
-  * cd s3fs-1.33/
+  * tar xvzf s3fs-1.35.tar.gz
+  * cd s3fs-1.35/
   * ./configure --prefix=/usr
   * make
   * make install (as root)
