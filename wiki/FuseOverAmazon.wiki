@@ -6,6 +6,7 @@ FUSE-based file system backed by Amazon S3
 For a commercially supported version with additional features see http://www.subcloud.com
 
 = What's New =
+ * [http://s3fs.googlecode.com/files/s3fs-1.35.tar.gz s3fs-1.35.tar.gz] (r306) Fixed issue with redirects and multipart upload works for files up to 64GB 
  * [http://s3fs.googlecode.com/files/s3fs-1.33.tar.gz s3fs-1.33.tar.gz] (r299) Now uses multipart upload for big (> 20MB) files 
  * [http://s3fs.googlecode.com/files/s3fs-1.30.tar.gz s3fs-1.30.tar.gz] (r290) *Directory Rename! - eliminated memory leaks*
  * s3fs-1.25.tar.gz (r282) *FUSE 2.8.4 or newer is required* see issues [http://code.google.com/p/s3fs/issues/detail?id=136 #136] and [http://code.google.com/p/s3fs/issues/detail?id=138 #138]
@@ -25,7 +26,7 @@ For a commercially supported version with additional features see http://www.sub
 
 = Overview =
 
-s3fs is a [http://fuse.sourceforge.net FUSE] filesystem that allows you to mount an Amazon S3 bucket as a local filesystem. It stores files natively and transparently in S3 (i.e., you can use other programs to access the same files). Maximum file size=2GB (limited by s3fs, not Amazon).
+s3fs is a [http://fuse.sourceforge.net FUSE] filesystem that allows you to mount an Amazon S3 bucket as a local filesystem. It stores files natively and transparently in S3 (i.e., you can use other programs to access the same files). Maximum file size=64GB (limited by s3fs, not Amazon).
 
 s3fs is stable and is being used in number of production environments, e.g., rsync backup to s3.
 
@@ -140,6 +141,10 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
 
 = Release Notes =
 
+ * [http://code.google.com/p/s3fs/source/detail?r=302 r302]
+  * fixed issue #144 - multipart upload works for files up to 64GB
+ * [http://code.google.com/p/s3fs/source/detail?r=301 r301]
+  * fixed issue #145 - data corruption on redirections  
  * [http://code.google.com/p/s3fs/source/detail?r=298 r298]
   * implemented multipart upload for files > 20MB
  * [http://code.google.com/p/s3fs/source/detail?r=289 r289]
