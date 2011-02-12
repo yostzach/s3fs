@@ -110,22 +110,25 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
  * *readwrite_timeout* (default="30" seconds)
   * time to wait between read/write activity before giving up
 
+ * *max_stat_cache_size* (default="10000" entries (about 4MB))
+  * maximum number of entries in the stat cache
+
  * *url* (default="http://s3.amazonaws.com")
   * sets the url to use to access amazon s3, e.g., if you want to use https then set url=https://s3.amazonaws.com
 
 = Details =
 
-If enabled via "use_cache" option, s3fs automatically maintains a local cache of files in the folder specified by use_cache. Whenever s3fs needs to read or write a file on s3 it first downloads the entire file locally to the folder specified by use_cache and operates on it. When fuse release() is called, s3fs will re-upload the file to s3 if it has been changed. s3fs uses md5 checksums to minimize downloads from s3.
-
-The folder specified by use_cache is just a local cache. It can be deleted at any time. s3fs re-builds it on demand.
-
-~~New for svn 43: Local file cache is disabled and I might not bring it back. I originally added local file cache thinking it would help for rsync (and createrepo). It ends up rsync works reasonably well without it. For createrepo, just rsync back and forth!~~
-
-s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and "x-amz-meta-mtime" custom meta headers. ~~As well, these are supported in a brute-force manner. That is, changing any x-amz-meta headers requires re-uploading the s3 object. This is exactly what s3fs does. When changing mode or mtime, s3fs will download the s3 object, change the meta header(s) and re-upload the s3 object. Ditto for file rename.~~ as of r149 s3fs uses x-amz-copy-source, this means that s3fs no longer needs to operate in a brute-force manner; much faster now (one minor performance-related corner case left to solve... /usr/bin/touch)
+If enabled via "use_cache" option, s3fs automatically maintains a local cache of files in the folder specified by use_cache. Whenever s3fs needs to read or write a file on s3 it first downloads the entire file locally to the folder specified by use_cache and operates on it. When fuse release() is called, s3fs will re-upload the file to s3 if it has been changed. s3fs uses md5 checksums to minimize downloads from s3. Note: this is different from the stat cache (see below).
 
 Local file caching works by calculating and comparing md5 checksums (ETag HTTP header).
 
-~~All s3 objects written by s3fs have a Content-Type of either "application/octet-stream" or "application/x-directory".~~ as of r152, s3fs now leverages /etc/mime.types to "guess" the "correct" content-type based on file name extension. This means that you can copy a website to s3 and serve it up directly from s3 with correct content-types!
+The folder specified by use_cache is just a local cache. It can be deleted at any time. s3fs re-builds it on demand. Note: this directory grows unbounded and can fill up a file system dependent upon the bucket and reads to that bucket. Take precaution by using a quota system or routinely clearing the cache (or some other method).
+
+s3fs supports chmod (mode) and touch (mtime) by virtue of "x-amz-meta-mode" and "x-amz-meta-mtime" custom meta headers. ~~As well, these are supported in a brute-force manner. That is, changing any x-amz-meta headers requires re-uploading the s3 object. This is exactly what s3fs does. When changing mode or mtime, s3fs will download the s3 object, change the meta header(s) and re-upload the s3 object. Ditto for file rename.~~ as of r149 s3fs uses x-amz-copy-source, this means that s3fs no longer needs to operate in a brute-force manner; much faster now (one minor performance-related corner case left to solve... /usr/bin/touch)
+
+The stat cache stores file information in memory and can improve performance. It's default setting is to store 10,000 entries which can account for about 4 MB of memory usage. When the stat cache fills up, entries with a low hit count are deleted first. The size of the stat cache is controllable with an option.
+
+s3fs uses /etc/mime.types to "guess" the "correct" content-type based on file name extension. This means that you can copy a website to s3 and serve it up directly from s3 with correct content-types. Uknown file types are assigned "application/octet-stream".
 
 = Important Limitations =
 == Eventual Consistency ==
