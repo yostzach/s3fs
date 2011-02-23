@@ -270,7 +270,7 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
   * file-based (instead of memory-based)
    * this means that s3fs will no longer allocate large memory buffers when writing files to s3
 
-= Faq =
+= FAQ =
 
  * What do I need to know?
   * /usr/bin/s3fs
@@ -293,7 +293,7 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
   * ~~you'll see this when a program you're using (e.g., tar, rsync) is trying to explicitly set the modification time of a file. s3fs currently does not support this. Contents of the file are ok, its just that the timestamp might not be what you're expecting. I'm working to fix this.~~ fixed in svn 43!
  * Its still not working!
   * Try updating your version of libcurl: I've used 7.16 and 7.17
- * Q: when I mount a bucket only the current user can see it; other users cannot; how do I allow other users to see it? A: use 'allow_other'
+ * Q: when I mount a bucket only the current user can see it; other users cannot; how do I allow other users to see it? ...why do I see "d?????????" in directory listings? A: use 'allow_other'
   * /usr/bin/s3fs -o allow_other mybucket /mnt
   * or from /etc/fstab: s3fs#mybucket /mnt fuse allow_other 0 0
  * Q: How does the local file cache work?
