@@ -3,8 +3,6 @@ FUSE-based file system backed by Amazon S3
 
 *Announcement: Please submit usage/support questions to the [http://code.google.com/p/s3fs/issues/list Issues] area instead of as a comment to this Wiki page. Thanks!*
 
-For a commercially supported version with additional features see http://www.subcloud.com
-
 = What's New =
  * [http://s3fs.googlecode.com/files/s3fs-1.35.tar.gz s3fs-1.35.tar.gz] (r306) Fixed issue with redirects and multipart upload works for files up to 64GB 
  * [http://s3fs.googlecode.com/files/s3fs-1.33.tar.gz s3fs-1.33.tar.gz] (r299) Now uses multipart upload for big (> 20MB) files 
