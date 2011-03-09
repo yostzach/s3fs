@@ -45,6 +45,8 @@ Install prerequisites before compiling:
 
 Tested on Fedora 14 Desktop Edition and CentOS 5.5 (*Note:* on Nov 25, 2010 with s3fs version 1.16, newer versions of s3fs have not been formally tested on these platforms)
 
+*Note:* See the comment below on how to get FUSE 2.8.4 installed on CentOS 5.5
+
 Install prerequisites before compiling:
   * yum install gcc
   * yum install libstdc++-devel
