@@ -43,7 +43,7 @@ Install prerequisites before compiling:
 
 == Fedora / CentOS ==
 
-Tested on Fedora 14 Desktop Edition and CentOS 5.5 (on Nov 25, 2010 with s3fs version 1.16, newer versions of s3fs have not been formally tested on these platforms)
+Tested on Fedora 14 Desktop Edition and CentOS 5.5 (*Note:* on Nov 25, 2010 with s3fs version 1.16, newer versions of s3fs have not been formally tested on these platforms)
 
 Install prerequisites before compiling:
   * yum install gcc
