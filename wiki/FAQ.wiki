@@ -1,0 +1,13 @@
+#summary Frequently Asked Questions
+
+= F.A.Q. =
+
+== subheading 1 ==
+
+*Are there restrictions on bucket names?*
+
+Yes. Upper case characters are not supported by s3fs even though allowable by AWS. See issue #98 and issue #126
+
+== subheading 2 ==
+
+== subheading 3 ==
