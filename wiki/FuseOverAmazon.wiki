@@ -310,6 +310,7 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
  * ~~rename is "supported" by virtue of returning EXDEV from rename()~~ fixed in svn 43! svn 43 supports deep renaming of files
  * ~~ when writing files: requires as much memory as the size of the largest file you're writing (this can be easily fixed) ~~ fixed (svn 27) you should now be able to copy, say, a 2GB file to s3 without having s3fs malloc 2GB of memory!
  * ~~ deep rename directories?!? ~~
+ * server side copies are not possible - due to how FUSE orchestrates the low level instructions, the file must first be downloaded to the client and then uploaded to the new location
 
 = ToDo =
 
