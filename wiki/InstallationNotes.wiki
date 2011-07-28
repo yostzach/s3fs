@@ -5,9 +5,9 @@
 
 == From released tarball ==
 
-Download: http://s3fs.googlecode.com/files/s3fs-1.58.tar.gz <br>
-Download SHA1 checksum: 9edaf567c324ddea667702ef94c9a0a291c25b28 <br>
-Download size: 148537 <br>
+Download: http://s3fs.googlecode.com/files/s3fs-1.59.tar.gz <br>
+Download SHA1 checksum: 4ab8ed00bb468823d386067e2b52ce3d8080e775 <br>
+Download size: 154904 <br>
 
   * tar xvzf s3fs-1.58.tar.gz
   * cd s3fs-1.58/
@@ -57,3 +57,4 @@ Install prerequisites before compiling:
   * yum install libxml2-devel
   * yum install openssl-devel
   * yum install mailcap
+
