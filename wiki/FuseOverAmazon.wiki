@@ -4,23 +4,8 @@ FUSE-based file system backed by Amazon S3
 *Announcement: Please submit usage/support questions to the [http://code.google.com/p/s3fs/issues/list Issues] area instead of as a comment to this Wiki page. Thanks!*
 
 = What's New =
+ * [http://s3fs.googlecode.com/files/s3fs-1.60.tar.gz s3fs-1.60.tar.gz] (r364) Support for files > 5GB. Fixed several memory leaks.
  * [http://s3fs.googlecode.com/files/s3fs-1.35.tar.gz s3fs-1.35.tar.gz] (r306) Fixed issue with redirects and multipart upload works for files up to 64GB 
- * [http://s3fs.googlecode.com/files/s3fs-1.33.tar.gz s3fs-1.33.tar.gz] (r299) Now uses multipart upload for big (> 20MB) files 
- * [http://s3fs.googlecode.com/files/s3fs-1.30.tar.gz s3fs-1.30.tar.gz] (r290) *Directory Rename! - eliminated memory leaks*
- * s3fs-1.25.tar.gz (r282) *FUSE 2.8.4 or newer is required* see issues [http://code.google.com/p/s3fs/issues/detail?id=136 #136] and [http://code.google.com/p/s3fs/issues/detail?id=138 #138]
- * s3fs-1.19.tar.gz (r271) 
- * s3fs-1.16.tar.gz (r256)  
- * r243 command line options accessKeyId and secretAccessKey are no longer supported
- * s3fs-1.10.tar.gz (r227) Credentials can now be supplied via environment variables, .passwd-s3fs file in the users home directory or by a file specified by a command line option.  Useful --help option. Command line error checking.
- * s3fs-1.01.tar.gz (r221) Added support for anonymously mounting public buckets
- * s3fs-1.0.tar.gz (r217) GNU-type distribution including a couple of issue fixes
- * r203 several fixes and enhancements - see release notes (below) to see all what has changed
- * r191 merged in tractis eu bucket changes http://github.com/tractis/s3fs-fork
- * r188 includes eucalyptus patch http://open.eucalyptus.com/wiki/s3fs
- * r177 fixed stale curl handle issue; fixed 100% cpu issue
- * r166 case insensitive mime type lookup
- * r152 (May 8, 2008)
-  * uses x-amz-copy-source; "correct" content-type lookup via /etc/mime.types; symlinks!
 
 = Overview =
 
