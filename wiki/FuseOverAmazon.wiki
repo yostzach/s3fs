@@ -4,6 +4,7 @@ FUSE-based file system backed by Amazon S3
 *Announcement: Please submit usage/support questions to the [http://code.google.com/p/s3fs/issues/list Issues] area instead of as a comment to this Wiki page. Thanks!*
 
 = What's New =
+* [http://s3fs.googlecode.com/files/s3fs-1.61.tar.gz s3fs-1.61.tar.gz] (r368) Maintenance release for 1.60, fixes a compile-time bug in 32bit systems and a memory leak in md5sum().
  * [http://s3fs.googlecode.com/files/s3fs-1.60.tar.gz s3fs-1.60.tar.gz] (r364) Support for files > 5GB. Fixed several memory leaks.
  * [http://s3fs.googlecode.com/files/s3fs-1.35.tar.gz s3fs-1.35.tar.gz] (r306) Fixed issue with redirects and multipart upload works for files up to 64GB 
 
