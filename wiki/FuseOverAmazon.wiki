@@ -5,6 +5,9 @@ FUSE-based file system backed by Amazon S3
 
 = What's New =
 
+ * [http://s3fs.googlecode.com/files/s3fs-1.64.tar.gz s3fs-1.64.tar.gz] (r392, r393) changes dir object logic for compatibility, adds a option, fixes some bugs.
+ * [http://s3fs.googlecode.com/files/s3fs-1.63.tar.gz s3fs-1.63.tar.gz] (r390) adds stat_cache_expire option, enable permission checking, fixes some bugs.
+ * [http://s3fs.googlecode.com/files/s3fs-1.62.tar.gz s3fs-1.62.tar.gz] (r384, r385) fixes some bugs(memory leak, unclosed fd, etc), adds a few options for compatibility.
  * [http://s3fs.googlecode.com/files/s3fs-1.61.tar.gz s3fs-1.61.tar.gz] (r368) Maintenance release for 1.60, fixes a compile-time bug in 32bit systems and a memory leak in md5sum().
  * [http://s3fs.googlecode.com/files/s3fs-1.60.tar.gz s3fs-1.60.tar.gz] (r364) Support for files > 5GB. Fixed several memory leaks.
  * [http://s3fs.googlecode.com/files/s3fs-1.35.tar.gz s3fs-1.35.tar.gz] (r306) Fixed issue with redirects and multipart upload works for files up to 64GB 
@@ -41,6 +44,8 @@ The s3fs password file has this format (use this format if you have only one set
 If have more than one set of credentials, then you can have default credentials as specified above, but this syntax will be recognized as well: 
 
 `bucketName:accessKeyId:secretAccessKey`
+
+If you want to use IAM account, you can get AccessKey/secretAccessKey pair on AWS S3 console.
 
 *Note: The credentials files may not have lax permissions as this creates a security hole.* ~/.passwd-s3fs may not have others/group permissions and /etc/passwd-s3fs may not have others permissions. Set permissions on these files accordingly:
 {{{
@@ -101,6 +106,21 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
  * *url* (default="http://s3.amazonaws.com")
   * sets the url to use to access amazon s3, e.g., if you want to use https then set url=https://s3.amazonaws.com
 
+ * *stat_cache_expire* (default is no expire)
+  * specify expire time(seconds) for entries in the stat cache.
+
+ * *nomultipart*
+  * disable multipart uploads.
+
+ * *noxmlns*
+  * disable  registing  xml name space for response of ListBucketResult and ListVersionsResult etc. Default name space is looked up from "http://s3.amazonaws.com/doc/2006-03-01".
+
+ * *nocopyapi*
+  * for  a  distributed object storage which is compatibility S3 API without PUT(copy api).  If you set this option, s3fs do not  use PUT  with  "x-amz-copy-source"(copy  api).
+
+ * *norenameapi*
+  * for a distributed object storage which is compatibility  S3  API without  PUT(copy  api).   This  option is a subset of nocopyapi option.
+
 = Details =
 
 If enabled via "use_cache" option, s3fs automatically maintains a local cache of files in the folder specified by use_cache. Whenever s3fs needs to read or write a file on s3 it first downloads the entire file locally to the folder specified by use_cache and operates on it. When fuse release() is called, s3fs will re-upload the file to s3 if it has been changed. s3fs uses md5 checksums to minimize downloads from s3. Note: this is different from the stat cache (see below).
@@ -129,6 +149,23 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
 
 = Release Notes =
 
+ * [http://code.google.com/p/s3fs/source/detail?r=392 r392]
+  * Fixes bugs(memory leak, unclosed curl handle, etc).
+  * Changes codes for cleaning up.
+  * Adds noreanmeapi option.
+  * Changes object name type for directory.
+ * [http://code.google.com/p/s3fs/source/detail?r=390 r390]
+  * Adds stat_cache_expire option
+  * Enable file permission checking.
+  * Recognizes normal file object which has no x-amz-meta-mode header.
+  * Adds "." and ".." directory when the files in the directory is listed. 
+  * Fixes bugs.
+ * [http://code.google.com/p/s3fs/source/detail?r=384 r384]
+  * Fixes bugs(memory leak, unclosed fd, etc).
+  * The mknod is changed that it always return error,.
+  * The symbolic file attribute changed to S_IFLNK | S_IRWXU | S_IRWXG | S_IRWXO.
+  * Fixes the truncate function to work.
+  * Adds noxmlns and nocopyapi option.
  * [http://code.google.com/p/s3fs/source/detail?r=302 r302]
   * fixed issue #144 - multipart upload works for files up to 64GB
  * [http://code.google.com/p/s3fs/source/detail?r=301 r301]
@@ -291,7 +328,7 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
   * A: Rename it back and your files will be back. s3fs does not support deep directory rename and doesn't check for it either.
 
 = Limitations =
- * no permissions checking
+ * ~~no permissions checking~~ fixed in svn r390
  * ~~no chmod support: all files are 0775~~ fixed in svn 43!
  * ~~no symlink support~~ added in r152
  * ~~rename is "supported" by virtue of returning EXDEV from rename()~~ fixed in svn 43! svn 43 supports deep renaming of files
@@ -309,7 +346,7 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
  * ~~ handle utime so that rsync works! ~~ fixed in svn 43!
   * ~~ probably a bad idea after all... ~~
   * ~~ actually don't think it can be done: can't specify arbitrary create-time for PUT ~~
- * chmod support... acl
+ * ~~chmod support... acl~~
  * permissions: using -o allow_other, even though files are owned by root 0755, another use can make changes
   * use default_permissions option?!?
  * better error logging for troubleshooting, ~~e.g., syslog...~~
