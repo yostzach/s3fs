@@ -5,6 +5,7 @@ FUSE-based file system backed by Amazon S3
 
 = What's New =
 
+ * [http://s3fs.googlecode.com/files/s3fs-1.65.tar.gz s3fs-1.65.tar.gz] (r396, r397) changes file layout of  source codes, fixes a bug(r397).
  * [http://s3fs.googlecode.com/files/s3fs-1.64.tar.gz s3fs-1.64.tar.gz] (r392, r393) changes dir object logic for compatibility, adds a option, fixes some bugs.
  * [http://s3fs.googlecode.com/files/s3fs-1.63.tar.gz s3fs-1.63.tar.gz] (r390) adds stat_cache_expire option, enable permission checking, fixes some bugs.
  * [http://s3fs.googlecode.com/files/s3fs-1.62.tar.gz s3fs-1.62.tar.gz] (r384, r385) fixes some bugs(memory leak, unclosed fd, etc), adds a few options for compatibility.
@@ -149,6 +150,11 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
 
 = Release Notes =
 
+ * [http://code.google.com/p/s3fs/source/detail?r=397 r397]
+  * Fixes a bug(can not make a directory which name is same as deleted directory name)
+ * [http://code.google.com/p/s3fs/source/detail?r=396 r396]
+  * No changes for logic, only changes file layout of functions and valuables.
+  * Adds s3fs_util.cpp/s3fs_util.h/common.h
  * [http://code.google.com/p/s3fs/source/detail?r=392 r392]
   * Fixes bugs(memory leak, unclosed curl handle, etc).
   * Changes codes for cleaning up.
