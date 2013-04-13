@@ -5,6 +5,7 @@ FUSE-based file system backed by Amazon S3
 
 = What's New =
 
+ * [http://s3fs.googlecode.com/files/s3fs-1.67.tar.gz s3fs-1.67.tar.gz] (r405) fixes bugs, fixes memory leak.
  * [http://s3fs.googlecode.com/files/s3fs-1.66.tar.gz s3fs-1.66.tar.gz] (r400) changes cache for performance, automatically checks xmlns, cleanups code, fixes bugs.
  * [http://s3fs.googlecode.com/files/s3fs-1.65.tar.gz s3fs-1.65.tar.gz] (r396, r397) changes file layout of  source codes, fixes a bug(r397).
  * [http://s3fs.googlecode.com/files/s3fs-1.64.tar.gz s3fs-1.64.tar.gz] (r392, r393) changes dir object logic for compatibility, adds a option, fixes some bugs.
@@ -151,6 +152,10 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
 
 = Release Notes =
 
+ * [http://code.google.com/p/s3fs/source/detail?r=405 r405]
+  * Fixes a bug(Issue: 328) - [http://code.google.com/p/s3fs/source/detail?r=404 r404]
+  * Fixes a bug(Issue: 326) - [http://code.google.com/p/s3fs/source/detail?r=403 r403]
+  * Fixes memory leak. - [http://code.google.com/p/s3fs/source/detail?r=403 r403]
  * [http://code.google.com/p/s3fs/source/detail?r=400 r400]
   * Changes stat cache, it accumulates stat information and some headers.
   * Changes that s3fs can decide using the xmlns url automatically.
