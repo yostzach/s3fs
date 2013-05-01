@@ -5,6 +5,7 @@ FUSE-based file system backed by Amazon S3
 
 = What's New =
 
+ * [http://s3fs.googlecode.com/files/s3fs-1.68.tar.gz s3fs-1.68.tar.gz] (r408,r409,r410,r411,r412,r413,r414) fixes bugs, supports nonempty option, supports other S3 clients.
  * [http://s3fs.googlecode.com/files/s3fs-1.67.tar.gz s3fs-1.67.tar.gz] (r405) fixes bugs, fixes memory leak.
  * [http://s3fs.googlecode.com/files/s3fs-1.66.tar.gz s3fs-1.66.tar.gz] (r400) changes cache for performance, automatically checks xmlns, cleanups code, fixes bugs.
  * [http://s3fs.googlecode.com/files/s3fs-1.65.tar.gz s3fs-1.65.tar.gz] (r396, r397) changes file layout of  source codes, fixes a bug(r397).
@@ -152,6 +153,14 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
 
 = Release Notes =
 
+ * [http://code.google.com/p/s3fs/source/detail?r=413 r413], [http://code.google.com/p/s3fs/source/detail?r=414 r414]
+  * Supports directory objects which are made by other S3 clients(Issue 27) 
+ * [http://code.google.com/p/s3fs/source/detail?r=410 r410]
+  * Supports "nonempty" fuse/mount option(Issue 265) 
+ * [http://code.google.com/p/s3fs/source/detail?r=409 r409]
+  * Fixes a bug(Issue 293) 
+ * [http://code.google.com/p/s3fs/source/detail?r=408 r408], [http://code.google.com/p/s3fs/source/detail?r=411 r411], [http://code.google.com/p/s3fs/source/detail?r=412 r412]
+  * Fixes a bug(Issue 320) 
  * [http://code.google.com/p/s3fs/source/detail?r=405 r405]
   * Fixes a bug(Issue: 328) - [http://code.google.com/p/s3fs/source/detail?r=404 r404]
   * Fixes a bug(Issue: 326) - [http://code.google.com/p/s3fs/source/detail?r=403 r403]
