@@ -5,6 +5,7 @@ FUSE-based file system backed by Amazon S3
 
 = What's New =
 
+ * [http://s3fs.googlecode.com/files/s3fs-1.69.tar.gz s3fs-1.69.tar.gz] (r418,r419,r420,r421,r422,r423,r424) fixes bugs, supports enable_noobj_cache/enable_content_md5/uid/gid options, supports s3sync objects.
  * [http://s3fs.googlecode.com/files/s3fs-1.68.tar.gz s3fs-1.68.tar.gz] (r408,r409,r410,r411,r412,r413,r414) fixes bugs, supports nonempty option, supports other S3 clients.
  * [http://s3fs.googlecode.com/files/s3fs-1.67.tar.gz s3fs-1.67.tar.gz] (r405) fixes bugs, fixes memory leak.
  * [http://s3fs.googlecode.com/files/s3fs-1.66.tar.gz s3fs-1.66.tar.gz] (r400) changes cache for performance, automatically checks xmlns, cleanups code, fixes bugs.
@@ -113,8 +114,14 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
  * *stat_cache_expire* (default is no expire)
   * specify expire time(seconds) for entries in the stat cache.
 
+ * *enable_noobj_cache* (default is disable)
+  * enable cache entries for the object which does not exist.
+
  * *nomultipart*
   * disable multipart uploads.
+
+ * *enable_content_md5* (default is disable)
+  * verifying  uploaded  data  without  multipart by content-md5 header.
 
  * *noxmlns*
   * disable  registing  xml name space for response of ListBucketResult and ListVersionsResult etc. Default name space is looked up from "http://s3.amazonaws.com/doc/2006-03-01".
@@ -153,6 +160,18 @@ see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency
 
 = Release Notes =
 
+ * [http://code.google.com/p/s3fs/source/detail?r=424 r424]
+  * Supported uid/gid option
+ * [http://code.google.com/p/s3fs/source/detail?r=423 r423]
+  * Added enable_content_md5 option
+ * [http://code.google.com/p/s3fs/source/detail?r=422 r422]
+  * Fixes a bug(Issue 31) 
+ * [http://code.google.com/p/s3fs/source/detail?r=420 r420],[http://code.google.com/p/s3fs/source/detail?r=421 r421]
+  * Fixes a bug(Issue 291) 
+  * Fixes a bug(Issue 240) 
+  * Added enable_noobj_cache option
+ * [http://code.google.com/p/s3fs/source/detail?r=418 r418],[http://code.google.com/p/s3fs/source/detail?r=419 r419]
+  * Fixed a bug that s3fs failed to get stats when max_stat_cache_size=0.
  * [http://code.google.com/p/s3fs/source/detail?r=413 r413], [http://code.google.com/p/s3fs/source/detail?r=414 r414]
   * Supports directory objects which are made by other S3 clients(Issue 27) 
  * [http://code.google.com/p/s3fs/source/detail?r=410 r410]
