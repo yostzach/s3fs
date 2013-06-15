@@ -5,6 +5,7 @@ FUSE-based file system backed by Amazon S3
 
 = What's New =
 
+ * [http://s3fs.googlecode.com/files/s3fs-1.71.tar.gz s3fs-1.71.tar.gz] (r438,r439,r440,r441,r442,r444) fixes bugs, adds use_sse option.
  * [http://s3fs.googlecode.com/files/s3fs-1.70.tar.gz s3fs-1.70.tar.gz] (r428,r429,r430,r431,r432,r433,r434) fixes bugs, adds nodnscache option.
  * [http://s3fs.googlecode.com/files/s3fs-1.69.tar.gz s3fs-1.69.tar.gz] (r418,r419,r420,r421,r422,r423,r424) fixes bugs, supports enable_noobj_cache/enable_content_md5/uid/gid options, supports s3sync objects.
  * [http://s3fs.googlecode.com/files/s3fs-1.68.tar.gz s3fs-1.68.tar.gz] (r408,r409,r410,r411,r412,r413,r414) fixes bugs, supports nonempty option, supports other S3 clients.
@@ -94,6 +95,9 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
  * *use_rrs* (default="" which means diabled)
   * use Amazon's Reduced Redundancy Storage
 
+ * *use_sse* (default="" which means disabled)
+  * use Amazon’s Server Site Encryption.
+
  * *passwd_file* (default="")
   * specify the path to the password file, over-rides looking for the password in in $HOME/.passwd-s3fs and /etc/passwd-s3fs
 
@@ -167,6 +171,14 @@ You don't mind about libcurl version when libcurl linked OpenSSL library instead
 
 = Release Notes =
 
+ * [http://code.google.com/p/s3fs/source/detail?r=442 r 442],  [http://code.google.com/p/s3fs/source/detail?r=444 r444]
+  * Fixed bugs and changed codes.
+ * [http://code.google.com/p/s3fs/source/detail?r=441 r441]
+  * Refixed a bug( Issue 343, 235, 257, 265 )
+ * [http://code.google.com/p/s3fs/source/detail?r=440 r440]
+  * Fixed a bug( Issue 342 )
+ * [http://code.google.com/p/s3fs/source/detail?r=438 r 438],  [http://code.google.com/p/s3fs/source/detail?r=439 r439]
+  * Supports SSE and adds "use_sse" option( Issue 226 ).
  * [http://code.google.com/p/s3fs/source/detail?r=434 r434]
   * Fixed a bug( Issue 235, Issue 257, Issue 265 )
  * [http://code.google.com/p/s3fs/source/detail?r=432 r432]
