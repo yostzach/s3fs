@@ -160,7 +160,10 @@ it is not something a FUSE wrapper like s3fs can work around. The retries option
 not address this issue. Your application must either tolerate or compensate for these
 failures, for example by retrying creates or reads. For more details, 
 see [http://code.google.com/p/s3fs/wiki/EventualConsistency Eventual Consistency]
-
+== libcurl version ==
+s3fs runs with libcurl, then if you use libcurl with libnss, s3fs requires libcurl after version 7.21.5.
+If you use lbcurl(with libnss) under version 7.21.5, s3fs leaks memory.
+You don't mind about libcurl version when libcurl linked OpenSSL library instead of libnss.
 
 = Release Notes =
 
