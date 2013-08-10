@@ -5,6 +5,7 @@ FUSE-based file system backed by Amazon S3
 
 = What's New =
 
+ * [http://s3fs.googlecode.com/files/s3fs-1.72.tar.gz s3fs-1.72.tar.gz] (r448 - r461) fixes bugs, adds multireq_max/parallel_count/fd_page_size option. And big change for performance.
  * [http://s3fs.googlecode.com/files/s3fs-1.71.tar.gz s3fs-1.71.tar.gz] (r438,r439,r440,r441,r442,r444) fixes bugs, adds use_sse option.
  * [http://s3fs.googlecode.com/files/s3fs-1.70.tar.gz s3fs-1.70.tar.gz] (r428,r429,r430,r431,r432,r433,r434) fixes bugs, adds nodnscache option.
  * [http://s3fs.googlecode.com/files/s3fs-1.69.tar.gz s3fs-1.69.tar.gz] (r418,r419,r420,r421,r422,r423,r424) fixes bugs, supports enable_noobj_cache/enable_content_md5/uid/gid options, supports s3sync objects.
@@ -128,6 +129,15 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
  * *nomultipart*
   * disable multipart uploads.
 
+ * *multireq_max* (default="500")
+  * maximum number of parallel request for listing objects.
+
+ * *parallel_count* (default="5")
+  * number of parallel request for downloading/uploading large objects. s3fs uploads large object(over 20MB) by multipart post request, and sends parallel requests. This option limits parallel request count which s3fs requests at once.
+
+ * *fd_page_size* (default="52428800"(50MB))
+  * number of internal management page size for each file discriptor.
+
  * *enable_content_md5* (default is disable)
   * verifying  uploaded  data  without  multipart by content-md5 header.
 
@@ -171,7 +181,11 @@ You don't mind about libcurl version when libcurl linked OpenSSL library instead
 
 = Release Notes =
 
- * [http://code.google.com/p/s3fs/source/detail?r=442 r 442],  [http://code.google.com/p/s3fs/source/detail?r=444 r444]
+ * [http://code.google.com/p/s3fs/source/detail?r=448 r448], [http://code.google.com/p/s3fs/source/detail?r=451 r451], [http://code.google.com/p/s3fs/source/detail?r=452 r452], [http://code.google.com/p/s3fs/source/detail?r=453 r453], [http://code.google.com/p/s3fs/source/detail?r=454 r454], [http://code.google.com/p/s3fs/source/detail?r=455 r455], [http://code.google.com/p/s3fs/source/detail?r=460 r460], [http://code.google.com/p/s3fs/source/detail?r=461 r461]
+  * Fixes bugs and changes codes
+ * [http://code.google.com/p/s3fs/source/detail?r=449 r449], [http://code.google.com/p/s3fs/source/detail?r=456 r456], [http://code.google.com/p/s3fs/source/detail?r=457 r457], [http://code.google.com/p/s3fs/source/detail?r=458 r458], [http://code.google.com/p/s3fs/source/detail?r=459 r459]
+  * Changes codes for performance, and adds options(multireq_max, parallel_count, fd_page_size)
+ * [http://code.google.com/p/s3fs/source/detail?r=442 r442],  [http://code.google.com/p/s3fs/source/detail?r=444 r444]
   * Fixed bugs and changed codes.
  * [http://code.google.com/p/s3fs/source/detail?r=441 r441]
   * Refixed a bug( Issue 343, 235, 257, 265 )
