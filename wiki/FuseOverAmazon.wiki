@@ -5,6 +5,7 @@ FUSE-based file system backed by Amazon S3
 
 = What's New =
 
+ * [http://s3fs.googlecode.com/files/s3fs-1.73.tar.gz s3fs-1.73.tar.gz] (r465 - r474) fixes bugs, adds ahbe_conf option and samples.
  * [http://s3fs.googlecode.com/files/s3fs-1.72.tar.gz s3fs-1.72.tar.gz] (r448 - r461) fixes bugs, adds multireq_max/parallel_count/fd_page_size option. And big change for performance.
  * [http://s3fs.googlecode.com/files/s3fs-1.71.tar.gz s3fs-1.71.tar.gz] (r438,r439,r440,r441,r442,r444) fixes bugs, adds use_sse option.
  * [http://s3fs.googlecode.com/files/s3fs-1.70.tar.gz s3fs-1.70.tar.gz] (r428,r429,r430,r431,r432,r433,r434) fixes bugs, adds nodnscache option.
@@ -102,6 +103,9 @@ s3fs will retry s3 transactions on certain error conditions. The default retry c
  * *passwd_file* (default="")
   * specify the path to the password file, over-rides looking for the password in in $HOME/.passwd-s3fs and /etc/passwd-s3fs
 
+ * *ahbe_conf* (default="" which means disabled)
+  * This option specifies the configuration file path which file is the additional HTTP header by file(object) extension.
+
  * *public_bucket* (default="" which means disabled)
   * anonymously mount a public bucket when set to 1, ignores the $HOME/.passwd-s3fs and /etc/passwd-s3fs files
 
@@ -181,6 +185,10 @@ You don't mind about libcurl version when libcurl linked OpenSSL library instead
 
 = Release Notes =
 
+ * [http://code.google.com/p/s3fs/source/detail?r=465 r465], [http://code.google.com/p/s3fs/source/detail?r=472 r472], [http://code.google.com/p/s3fs/source/detail?r=473 r473]
+  * Adds ahbe_conf option and samples, change mount point permission
+ * [http://code.google.com/p/s3fs/source/detail?r=466 r466], [http://code.google.com/p/s3fs/source/detail?r=467 r467], [http://code.google.com/p/s3fs/source/detail?r=468 r468], [http://code.google.com/p/s3fs/source/detail?r=470 r470], [http://code.google.com/p/s3fs/source/detail?r=471 r471], [http://code.google.com/p/s3fs/source/detail?r=474 r474]
+  * Fixes bugs and changes codes
  * [http://code.google.com/p/s3fs/source/detail?r=448 r448], [http://code.google.com/p/s3fs/source/detail?r=451 r451], [http://code.google.com/p/s3fs/source/detail?r=452 r452], [http://code.google.com/p/s3fs/source/detail?r=453 r453], [http://code.google.com/p/s3fs/source/detail?r=454 r454], [http://code.google.com/p/s3fs/source/detail?r=455 r455], [http://code.google.com/p/s3fs/source/detail?r=460 r460], [http://code.google.com/p/s3fs/source/detail?r=461 r461]
   * Fixes bugs and changes codes
  * [http://code.google.com/p/s3fs/source/detail?r=449 r449], [http://code.google.com/p/s3fs/source/detail?r=456 r456], [http://code.google.com/p/s3fs/source/detail?r=457 r457], [http://code.google.com/p/s3fs/source/detail?r=458 r458], [http://code.google.com/p/s3fs/source/detail?r=459 r459]
