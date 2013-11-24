@@ -5,6 +5,7 @@ FUSE-based file system backed by Amazon S3
 
 = What's New =
 
+ * [http://s3fs.googlecode.com/files/s3fs-1.74.tar.gz s3fs-1.74.tar.gz] (r478 - r498) fixes bugs(memory leak etc), IAM role, changes utility mode.
  * [http://s3fs.googlecode.com/files/s3fs-1.73.tar.gz s3fs-1.73.tar.gz] (r465 - r474) fixes bugs, adds ahbe_conf option and samples.
  * [http://s3fs.googlecode.com/files/s3fs-1.72.tar.gz s3fs-1.72.tar.gz] (r448 - r461) fixes bugs, adds multireq_max/parallel_count/fd_page_size option. And big change for performance.
  * [http://s3fs.googlecode.com/files/s3fs-1.71.tar.gz s3fs-1.71.tar.gz] (r438,r439,r440,r441,r442,r444) fixes bugs, adds use_sse option.
@@ -185,6 +186,32 @@ You don't mind about libcurl version when libcurl linked OpenSSL library instead
 
 = Release Notes =
 
+ * [http://code.google.com/p/s3fs/source/detail?r=497 r497]
+  * Fixed a bug(Issue 389)
+ * [http://code.google.com/p/s3fs/source/detail?r=495 r495], [http://code.google.com/p/s3fs/source/detail?r=496 r496]
+  * Fixed a bug that object size is overflow on 32bit OS.
+ * [http://code.google.com/p/s3fs/source/detail?r=493 r493]
+  * Changed utility mode and Supported removing multipart uploading object.
+ * [http://code.google.com/p/s3fs/source/detail?r=491 r491], [http://code.google.com/p/s3fs/source/detail?r=492 r492]
+  * Fixed a bug(Issue 371 #28, #32).
+ * [http://code.google.com/p/s3fs/source/detail?r=490 r490]
+  * Supported IAM role(like s3fs-c).
+ * [http://code.google.com/p/s3fs/source/detail?r=489 r489]
+  * Fixed a bug about public_bucket.
+ * [http://code.google.com/p/s3fs/source/detail?r=486 r486]
+  * Fixed a bug(Issue 371).
+ * [http://code.google.com/p/s3fs/source/detail?r=483 r483], [http://code.google.com/p/s3fs/source/detail?r=484 r484], [http://code.google.com/p/s3fs/source/detail?r=487 r487], [http://code.google.com/p/s3fs/source/detail?r=488 r488], [http://code.google.com/p/s3fs/source/detail?r=493 r493], [http://code.google.com/p/s3fs/source/detail?r=494 r494], [http://code.google.com/p/s3fs/source/detail?r=495 r495], [http://code.google.com/p/s3fs/source/detail?r=498 r498]
+  * Fixed trifling bugs, and changed some codes.
+ * [http://code.google.com/p/s3fs/source/detail?r=482 r482]
+  * Fixed memory leak, and changed parallel count 500 to 20 for multipart head, fixed some bugs.
+ * [http://code.google.com/p/s3fs/source/detail?r=481 r481], [http://code.google.com/p/s3fs/source/detail?r=485 r485]
+  * Fixed a bug(Issue 368).
+ * [http://code.google.com/p/s3fs/source/detail?r=480 r480]
+  * Fixed a bug(Issue 321), and some bugs, strict checking option.
+ * [http://code.google.com/p/s3fs/source/detail?r=479 r479]
+  * Calling curl_global_init function once, and Adds dynamic lock callback for OpenSSL.
+ * [http://code.google.com/p/s3fs/source/detail?r=478 r478]
+  * for 32bit compiling.
  * [http://code.google.com/p/s3fs/source/detail?r=465 r465], [http://code.google.com/p/s3fs/source/detail?r=472 r472], [http://code.google.com/p/s3fs/source/detail?r=473 r473]
   * Adds ahbe_conf option and samples, change mount point permission
  * [http://code.google.com/p/s3fs/source/detail?r=466 r466], [http://code.google.com/p/s3fs/source/detail?r=467 r467], [http://code.google.com/p/s3fs/source/detail?r=468 r468], [http://code.google.com/p/s3fs/source/detail?r=470 r470], [http://code.google.com/p/s3fs/source/detail?r=471 r471], [http://code.google.com/p/s3fs/source/detail?r=474 r474]
