@@ -1,6 +1,9 @@
 #labels Featured
 FUSE-based file system backed by Amazon S3
 
+*Announcement: This s3fs project is moved to "s3fs-fuse" on GitHub December 15th, 2013.
+https://github.com/s3fs-fuse/s3fs-fuse
+
 *Announcement: Please submit usage/support questions to the [http://code.google.com/p/s3fs/issues/list Issues] area instead of as a comment to this Wiki page. Thanks!*
 
 = What's New =
